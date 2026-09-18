@@ -13,7 +13,7 @@ export function ProfilePage() {
   return (
     <main className="min-h-dvh bg-black text-white">
       <div className="mx-auto w-full max-w-[540px]">
-        <ProfileHeader profile={profile} variant={tab} />
+        <ProfileHeader profile={profile} />
         <ProfileTabs active={tab} onChange={setTab} />
         {tab === "work" ? (
           <WorkGrid projects={profile.projects} />

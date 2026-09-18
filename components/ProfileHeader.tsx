@@ -3,50 +3,12 @@
 import Image from "next/image";
 import { Send, Sparkles } from "lucide-react";
 import type { Profile } from "@/content/profile";
-import type { TabId } from "@/components/ProfileTabs";
 
 type ProfileHeaderProps = {
   profile: Profile;
-  variant: TabId;
 };
 
-export function ProfileHeader({ profile, variant }: ProfileHeaderProps) {
-  if (variant === "info") {
-    return (
-      <header className="relative flex items-center justify-between gap-3 px-4 pb-4 pt-5 border-b border-zinc-900">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-zinc-700 bg-zinc-800">
-            <Image
-              src={profile.avatar}
-              alt={profile.name}
-              fill
-              sizes="44px"
-              className="object-cover"
-            />
-          </div>
-          <div className="min-w-0">
-            <h1 className="truncate text-[17px] font-semibold tracking-tight text-white">
-              {profile.name}
-            </h1>
-            <p className="truncate text-[12px] text-zinc-400">
-              {profile.role}
-            </p>
-          </div>
-        </div>
-
-        <a
-          href={profile.telegramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800/80 text-zinc-300 hover:bg-[#229ED9] hover:text-white transition"
-          title="Написать в Telegram"
-        >
-          <Send size={15} />
-        </a>
-      </header>
-    );
-  }
-
+export function ProfileHeader({ profile }: ProfileHeaderProps) {
   return (
     <header className="relative pb-5 pt-0">
       {/* Banner background */}
