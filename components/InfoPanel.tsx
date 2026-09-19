@@ -9,6 +9,11 @@ export function InfoPanel({ profile }: { profile: Profile }) {
   const [expanded, setExpanded] = useState(false);
   const aboutText = expanded ? profile.aboutFull : profile.about;
 
+  // Clean and robust Telegram URL: https://t.me/username
+  const username = (profile.telegram || "@koooki0").replace(/^@+/, "");
+  const telegramHref = `https://t.me/${username}`;
+  const telegramDisplay = `@${username}`;
+
   return (
     <div className="px-5 pb-20 pt-6 animate-in fade-in duration-200">
       {/* Location */}
@@ -43,20 +48,27 @@ export function InfoPanel({ profile }: { profile: Profile }) {
       {/* Contact / Links */}
       <section className="mb-7 rounded-2xl border border-zinc-850 bg-[#141416] p-4">
         <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
-          Контакты и связь
+          Связь / Telegram
         </p>
         <div className="space-y-2.5">
           <a
-            href={profile.telegramUrl}
+            href={telegramHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-3 text-[14px] font-medium text-zinc-100 hover:border-[#229ED9]/60 hover:bg-[#229ED9]/10 transition"
+            className="group flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-3.5 text-[14px] font-medium text-zinc-100 hover:border-[#229ED9]/70 hover:bg-[#229ED9]/15 transition"
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#229ED9]/20 text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition">
-                <Send size={15} />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#229ED9]/20 text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition">
+                <Send size={16} />
               </div>
-              <span>{profile.telegramLabel}</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[15px] font-semibold text-white tracking-wide">
+                  {telegramDisplay}
+                </span>
+                <span className="text-[11px] text-zinc-400">
+                  Написать в Telegram
+                </span>
+              </div>
             </div>
             <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition" />
           </a>

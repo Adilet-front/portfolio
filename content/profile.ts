@@ -119,9 +119,9 @@ export const profile: Profile = {
     "Алия. Веб-дизайнер, который помогает сайту расти за счёт ясности, ритма и понятного пути пользователя.",
   aboutFull:
     "Алия. Веб-дизайнер, который помогает продуктам расти за счёт ясности, ритма и понятного пути пользователя.\n\nСпециализируюсь на создании удобных интерфейсов, e-commerce проектов, мобильных приложений и конверсионных посадочных страниц. Работаю в связке с разработчиками, создаю масштабируемые дизайн-системы и детально продумываю пользовательский путь от первого клика до целевого действия.",
-  telegram: "@aliya",
-  telegramUrl: "https://telegrame/@koooki0",
-  telegramLabel: "Telegram: @koooki0",
+  telegram: "@koooki0",
+  telegramUrl: "https://t.me/koooki0",
+  telegramLabel: "@koooki0",
   focus: ["UI/UX", "Web Design", "Mobile Apps", "Design Systems"],
   memberSince: "SEP 18, 2026",
   avatar: "/avatar.jpg",
