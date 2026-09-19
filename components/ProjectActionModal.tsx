@@ -3,20 +3,18 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, FileText, X, ArrowUpRight, ArrowRight, Play } from "lucide-react";
+import { Globe, FileText, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { FigmaIcon } from "@/components/FigmaIcon";
 import type { Project } from "@/content/profile";
 
 type ProjectActionModalProps = {
   project: Project | null;
   onClose: () => void;
-  onOpenLivePreview: (project: Project) => void;
 };
 
 export function ProjectActionModal({
   project,
   onClose,
-  onOpenLivePreview,
 }: ProjectActionModalProps) {
   useEffect(() => {
     if (!project) return;
@@ -41,7 +39,7 @@ export function ProjectActionModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-md p-0 sm:p-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-md p-0 sm:p-4 animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -119,11 +117,12 @@ export function ProjectActionModal({
             </div>
           </a>
 
-          {/* Option 2: Live In-App Website */}
-          <button
-            type="button"
-            onClick={() => onOpenLivePreview(project)}
-            className="group w-full flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition text-left"
+          {/* Option 2: Live Website / Behance */}
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition"
           >
             <div className="flex items-center gap-3.5">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
@@ -134,14 +133,16 @@ export function ProjectActionModal({
                   Реализованный проект
                 </div>
                 <div className="text-[12px] text-zinc-400">
-                  Интерактивный запуск прямо в портфолио
+                  {project.liveUrl.includes("behance.net")
+                    ? "Открыть проект на Behance"
+                    : "Перейти на сайт проекта"}
                 </div>
               </div>
             </div>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition">
-              <Play size={15} />
+              <ArrowUpRight size={16} />
             </div>
-          </button>
+          </a>
 
           {/* Option 3: Case Study Details */}
           <Link

@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { Project } from "@/content/profile";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectActionModal } from "@/components/ProjectActionModal";
-import { ProjectLivePreviewModal } from "@/components/ProjectLivePreviewModal";
 
 type WorkGridProps = {
   projects: Project[];
@@ -12,12 +11,6 @@ type WorkGridProps = {
 
 export function WorkGrid({ projects }: WorkGridProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [previewProject, setPreviewProject] = useState<Project | null>(null);
-
-  const handleOpenLivePreview = (project: Project) => {
-    setSelectedProject(null);
-    setPreviewProject(project);
-  };
 
   return (
     <>
@@ -34,12 +27,6 @@ export function WorkGrid({ projects }: WorkGridProps) {
       <ProjectActionModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
-        onOpenLivePreview={handleOpenLivePreview}
-      />
-
-      <ProjectLivePreviewModal
-        project={previewProject}
-        onClose={() => setPreviewProject(null)}
       />
     </>
   );

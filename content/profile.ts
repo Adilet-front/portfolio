@@ -42,7 +42,7 @@ export type Profile = {
 export const projects: Project[] = [
   {
     slug: "lumine",
-    title: "Website / Бренд янтарных украшений LUMINE",
+    title: "Website / Бренд янтарных украшений (Amber jewelry brand)",
     shortTitle: "LUMINE / Ювелирный бренд",
     category: "E-Commerce & Branding",
     year: "2024",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       "Концепт премиального сайта для бренда украшений из янтаря: утончённая типографика, свободное пространство и крупные кадры изделий.",
     body: "Концепт интернет-магазина для бренда авторских янтарных украшений LUMINE.\n\nГлавный экран строится вокруг крупного названия и атмосферного портрета, погружая пользователя в эстетику бренда. Далее представлена интерактивная сетка изделий с фильтрацией по коллекциям, блок об истории и происхождении балтийского янтаря, а также интуитивный чекаут в 2 шага.\n\nПроект разработан с фокусом на mobile-first опыт, лёгкую навигацию и визуальное наслаждение продуктом.",
     figmaUrl: "https://www.figma.com/design/demo-lumine-jewelry-concept",
-    liveUrl: "/demos/lumine/index.html",
+    liveUrl: "https://www.behance.net/gallery/245066905/Websitebrend-jantarnyh-ukrashenijAmber-jewelry-brand",
     tags: ["Figma", "UI/UX", "Web Design", "E-Commerce", "Design System"],
     deliverables: [
       "Дизайн-система",
