@@ -1,0 +1,1394 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Onest:wght@400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+}
+
+/* 
+   НОВЫЙ ГЛОБАЛЬНЫЙ ОГРАНИЧИТЕЛЬНЫЙ КЛАСС (Вместо старого жесткого .wrapper)
+   Он автоматически центрирует контент внутри любого блока и создает безопасные отступы по бокам,
+   не ломая фоновые цвета самих родительских секций.
+*/
+.container {
+max-width: 100%; /* Теперь сайт тянется на всю ширину экрана */
+       padding: 32px;
+    width: 100%;
+}
+
+/* --- ШАПКА --- */
+.header-section {
+    width: 100%;
+    background-color: #fcfbfa;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+
+/* --- ШАПКА --- */
+.header {
+    
+    background-image: url('../assets/icons/backService.png');
+    width: 100%;
+    height: 500px; /* Фиксированная высота как просил */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    position: relative; 
+    border-radius: 40px; /* Скругляем все углы самой шапки согласно макету */
+    overflow: hidden;
+}
+
+/* --- СТИЛИ ДЛЯ ПЛАШКИ С ВНУТРЕННИМ СГЛАЖИВАНИЕМ --- */
+.header-breadcrumbs {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #fcfbfa; /* Цвет фона страницы */
+    padding: 24px 150px; /* Увеличили боковые отступы для текста */
+    
+    /* Скругляем верхние углы самой плашки */
+    border-radius: 40px 40px 0 0; 
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ЛЕВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -40px; /* Сдвигаем влево на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией: угол прозрачный, остальное закрашено фоном страницы */
+    background: radial-gradient(circle at top left, transparent 40px, #fcfbfa 41px);
+}
+
+/* ПРАВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -40px; /* Сдвигаем вправо на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией для правой стороны */
+    background: radial-gradient(circle at top right, transparent 40px, #fcfbfa 41px);
+}
+
+/* Стилизация текста внутри крошек */
+.crumb-main {
+    color: #1a1a1a;
+}
+
+.crumb-separator {
+    color: #1a1a1a;
+    margin: 0 4px;
+}
+
+.crumb-current {
+    color: #F8721F; /* Твой оранжевый цвет */
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-contacts .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header-contacts .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.header-contacts .phone-number {
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+/* 2. САМА КНОПКА (ОБЯЗАТЕЛЬНО ОБНОВИ ЕЁ) */
+.btn {
+    display: inline-flex;    /* МЕНЯЕМ inline-block НА inline-flex (это решит проблему) */
+    align-items: center;     /* Центрирует текст внутри кнопки по вертикали */
+    justify-content: center; /* Центрирует текст внутри кнопки по горизонтали */
+    padding: 14px 28px;
+    border-radius: 100px;    /* Делает идеальную капсулу */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;          /* Сбрасывает невидимые отступы шрифта, которые двигали текст */
+    white-space: nowrap;     /* Запрещает тексту ломаться на две строчки */
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 9px 28px;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #F8721F;
+}
+
+
+
+.block4-footer-ribbon {
+margin-top: 60PX;
+margin-bottom: 80px;
+    width: 100%;
+    overflow: hidden; 
+    background-color: #fcfbfa; 
+}
+
+/* Стили для нового движущегося контейнера */
+.ribbon-track {
+    display: flex;
+    width: 200%; /* Ширина 200%, так как внутри 2 картинки (каждая по 100% экрана) */
+    /* 15s - скорость анимации (сделай больше для замедления), linear - равномерная скорость, infinite - бесконечно */
+    animation: scroll 15s linear infinite; 
+}
+
+.img-ribbon {
+    width: 50%; /* 50% от ширины трека (что равняется ровно 100% ширины экрана) */
+    height: auto;
+    display: block;
+    object-fit: cover; 
+}
+
+/* Ключевые кадры анимации (движение справа налево) */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Сдвигаем ровно на одну картинку влево */
+    }
+}
+
+
+
+
+
+/* --- ОСНОВНАЯ СЕТКА БЛОГА --- */
+.blog-section {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    background-color: #F6F2ED;
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: 1fr 340px; /* Левая колонка занимает всё свободное место, правая фикс 340px */
+    gap: 40px;
+}
+
+/* --- ЛЕВАЯ КОЛОНКА --- */
+.conditionsLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.main-image-wrapper {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    /* Удали background, когда вставишь реальное фото */
+    background-image: url(../assets/icons/blogdog.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 400px;
+}
+
+.content-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Убрать opacity когда будет картинка */
+    opacity: 0; 
+}
+
+.page-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.text-paragraph {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.section-subtitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Синее подчеркивание под заголовком */
+
+/* Сетка преимуществ (Что входит в комплект) */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.features-grid li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Заглушка для иконки галочки */
+.icon-check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+/* Две картинки в ряд */
+.two-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Старый код для контейнера (оставь как есть) */
+.two-images-grid .img-wrapper {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background-color: transparent; /* Убедись, что фон контейнера не мешает */
+}
+
+/* Обновленный код: более конкретный селектор для картинки внутри этого блока */
+.two-images-grid .img-wrapper .content-img {
+    display: block;    /* Убедись, что display: inline не мешает */
+    width: 100%;       /* Занимаем всю ширину контейнера */
+    height: 100%;      /* Занимаем всю высоту контейнера (чтобы работал aspect-ratio) */
+    object-fit: cover; /* Идеально вписываем картинку */
+    
+    /* !!! САМОЕ ВАЖНОЕ !!! */
+    opacity: 1 !important; /* Гарантируем, что картинка не прозрачная. */
+                           /* !important нужен, только если opacity: 0 задано где-то еще мощным селектором */
+}
+
+.blackback{
+    width: 100%;
+    height: 172px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 140px;
+    padding-right: 140px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-radius: 16px;
+
+}
+.blackback p{
+    font-family: "Onest";
+    font-size: 13px;
+}
+.blackback h2{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+
+
+/* --- СТИЛИ ДЛЯ FAQ АККОРДЕОНА --- */
+.faq-accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Отступ между плашками вопросов */
+    margin-top: 32px; /* Отделяем блок от верхнего контента */
+}
+
+.faq-item {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Стили для раскрытого элемента (можно добавить легкую тень) */
+.faq-item[open] {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* Прячем стандартный браузерный треугольник у summary */
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none; /* Прячет стрелку в Firefox */
+    user-select: none;
+}
+
+.faq-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    padding-right: 20px; /* Чтобы текст не налезал на плюсик */
+    line-height: 1.4;
+}
+
+/* Кастомный переключатель (плюсик/минусик) */
+.faq-toggle {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Рисуем горизонтальную линию плюсика */
+.faq-toggle::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background-color: black; /* Твой оранжевый цвет */
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Рисуем вертикальную линию плюсика */
+.faq-toggle::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 14px;
+    background-color: black;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Анимация превращения плюса в минус при открытии */
+.faq-item[open] .faq-toggle::after {
+    transform: rotate(90deg);
+    opacity: 0; /* Прячем вертикальную линию, оставляя только горизонтальный минус */
+}
+
+.faq-item[open] .faq-toggle::before {
+    transform: rotate(180deg);
+}
+
+/* Контейнер для ответа */
+.faq-answer {
+    padding: 0 24px 24px 24px; /* Сверху 0, чтобы не было лишнего отступа от вопроса */
+}
+
+.faq-answer p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+}
+
+
+
+
+/* --- ПРАВАЯ КОЛОНКА (САЙДБАР) --- */
+.searchRight {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Общий стиль для виджетов */
+.widget {
+    background-color: #F6F2ED;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* Легкая тень, чтобы отделить от фона fcfbfa */
+    border: 1px solid #E4E4E5;
+}
+
+.widget-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Виджет поиска */
+.search-widget {
+    padding: 20px;
+}
+
+.search-form {
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 100px;
+    padding: 4px;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 0 16px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-btn {
+    background-color: #F8721F;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+
+}
+
+.search-btn:hover {
+    background-color: #e06519;
+}
+
+.icon-search {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Виджет категорий */
+.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.category-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.category-list a {
+    text-decoration: none;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    transition: color 0.3s;
+}
+
+.category-list a:hover {
+    color: #F8721F;
+}
+
+.category-list span {
+    color: #1a1a1a;
+}
+
+/* Виджет последних публикаций */
+.recent-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    background-color: #e0e0e0; /* Заглушка */
+    flex-shrink: 0;
+}
+
+.post-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    transition: color 0.3s;
+}
+
+.post-item:hover .post-info h4 {
+    color: #F8721F;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Промо-виджет */
+.promo-widget {
+   background-image: url('../assets/icons/photofish.jpg');
+   background-color: rgba(2, 0, 15, 0.5);
+   background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 24px;
+}
+
+/* Затемнение для картинки, чтобы текст читался */
+.promo-widget::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0, 0.4);
+    z-index: 1;
+}
+
+.promo-widget > * {
+    position: relative;
+    z-index: 2;
+}
+
+.promo-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.3;
+}
+
+.promo-logo {
+    background: #fff;
+    border-radius: 100px;
+    padding: 12px 24px;
+    display: inline-block;
+    margin-bottom: 24px;
+    min-width: 150px;
+    min-height: 40px; /* Заглушка, пока нет лого */
+}
+
+.promo-desc {
+    font-size: 14px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.promo-phone {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    margin-bottom: 24px;
+}
+
+.btn-orange {
+    background-color: #F8721F;
+    color: #ffffff;
+    border: none;
+    width: 100%;
+}
+
+.btn-orange:hover {
+    background-color: #e06519;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 1024px) {
+    .blog-container {
+        grid-template-columns: 1fr; /* Колонки встают друг под друга */
+    }
+    
+    .searchRight {
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr; /* Список преимуществ в 1 колонку */
+    }
+    
+    .two-images-grid {
+        grid-template-columns: 1fr; /* Картинки друг под другом */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Главный контейнер секции */
+.helpDogBlock5 {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 60px 42px 47px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Шапка секции */
+.block5-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.history-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #F1A533;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.helpDogBlock5 h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 16px 0;
+}
+
+.helpDogBlock5 .subtitle {
+    font-size: 16px;
+    color: #666666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+/* Оранжевый контейнер (основа) */
+.block5-container {
+    background-color: #F1A533; /* Резервный цвет из макета */
+    background-image: url(../assets/icons/Background4.png);
+    width: 100%;
+    min-height: 625px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    display: flex;
+    overflow: hidden; 
+}
+
+/* Левая часть (Фото животных) */
+.block5-image-side {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.pets-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Правая часть (Контент с карточками) */
+.block5-content-side {
+    flex: 1.1; /* Чуть шире левой, чтобы карточкам было просторно */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    padding: 22px; 
+    box-sizing: border-box;
+}
+/* ==========================================
+   ЖЕЛЕЗОБЕТОННЫЙ ВАРИАНТ С ОРАНЖЕВОЙ ЗАГЛУШКОЙ
+   ========================================== */
+
+/* Сама карточка — обычный скругленный прямоугольник */
+.step-card {
+    position: relative;
+    width: 100%;
+    background: #FFFBF5; /* Цвет плашки */
+    border-radius: 30px; /* Красивое скругление всех углов */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04); /* Мягкая правильная тень */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: visible; /* Важно, чтобы углы заглушки не резались */
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Контентная часть */
+.card-icon-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    /* Большой отступ справа, чтобы текст не заходил в зону цифры */
+    padding: 35px 120px 35px 35px; 
+    box-sizing: border-box;
+}
+
+/* Оранжевая заглушка, которая "вырезает" верхний правый угол */
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;     /* Слегка перекрываем границы, чтобы не было микро-щелей */
+    right: -2px;
+    width: 95px;   /* Ширина зоны под цифру */
+    height: 75px;  /* Высота зоны под цифру */
+    border-bottom-left-radius: 30px; /* Скругление внутреннего угла выреза */
+    z-index: 2;
+}
+
+/* Блок с цифрой встает поверх оранжевой заглушки */
+.card-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 93px;  /* Чуть меньше заглушки для центрования */
+    height: 73px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111111;
+    z-index: 3; /* Выше заглушки */
+    background: transparent;
+}
+
+/* Маленькие скругления-"ушки" на стыке карточки и выреза */
+/* Левое верхнее "ушко" */
+.card-number::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px; /* Вплотную к левому краю выреза */
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    pointer-events: none;
+}
+
+/* Правое нижнее "ушко" */
+.card-number::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Вплотную к нижнему краю выреза */
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    pointer-events: none;
+}
+
+/* ------------------------------------------
+   ФИНАЛЬНЫЙ ПОДБОР ЦВЕТОВ ПОД ГРАДИЕНТ
+   ------------------------------------------ */
+
+/* Карточка 1 (Обновленный точный цвет из файла 23.12.25.png) */
+
+
+.step-card:nth-child(1)::before {
+    background-color: #f3a830;
+}
+.step-card:nth-child(1) .card-number::before,
+.step-card:nth-child(1) .card-number::after {
+    box-shadow: 5px -5px 0 5px #f3a830;
+}
+
+/* Карточка 2 (Оставили как есть, подошёл хорошо) */
+.step-card:nth-child(2)::before {
+    background-color: #EDA93D;
+}
+.step-card:nth-child(2) .card-number::before,
+.step-card:nth-child(2) .card-number::after {
+    box-shadow: 5px -5px 0 5px #EDA93D;
+}
+
+/* Карточка 3 (Вернули первоначальный точный цвет #F1A533) */
+.step-card:nth-child(3)::before {
+    background-color: #F1A533;
+}
+.step-card:nth-child(3) .card-number::before,
+.step-card:nth-child(3) .card-number::after {
+    box-shadow: 5px -5px 0 5px #F1A533;
+}
+
+/* Элементы текста */
+.card-tick {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.card-text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 10px 0;
+}
+
+.card-text p {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ
+   ========================================== */
+@media (max-width: 576px) {
+    /* На мобилках убираем этот сложный угол, делая карточку обычной */
+    .step-card {
+        border-radius: 20px;
+    }
+    .step-card::before {
+        display: none;
+    }
+    .card-icon-text {
+        padding: 24px 20px 60px 20px;
+    }
+    .card-number {
+        top: auto;
+        bottom: 15px;
+        right: 20px;
+        width: auto;
+        height: auto;
+        font-size: 22px;
+    }
+    .card-number::before,
+    .card-number::after {
+        display: none;
+    }
+}
+
+
+
+
+/* СЕКЦИЯ: Отзывы */
+.testimonials-section {
+    background-color: rgba(246, 242, 237, 1);
+    width: 100%;
+    min-height: 893px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0; /* Убираем жесткий padding по бокам, его будет контролировать контейнер */
+    box-sizing: border-box;
+}
+
+/* НОВОЕ: Контейнер, фиксирующий ширину контента по центру сайта */
+.testimonials-container {
+    width: 100%;
+    max-width: 1200px; /* Установи ширину как у остальных блоков твоего сайта */
+    margin: 0 auto;
+    padding: 0 60px; /* Перенесли отступы сюда, чтобы стрелки не прижимались к краям браузера */
+    box-sizing: border-box;
+    position: relative; /* Делаем контейнер опорным для абсолютных стрелок */
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 45px;
+    gap: 15px;
+}
+
+.section-header h2 {
+    font-size: 46px;
+    margin: 0;
+}
+
+/* Окно просмотра */
+.testimonials-slider {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Дорожка для движения карточек */
+.testimonials-track {
+    display: flex;
+    gap: 30px; 
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+/* Базовые настройки карточки из твоего кода + адаптивная ширина */
+.testimonial-card {
+    flex: 0 0 calc((100% - 60px) / 3); /* 60px — это 2 зазора по 30px */
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 40px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 30px 55px 50px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+    overflow: visible;
+}
+
+.testimonial-card::before,
+.testimonial-card::after {
+    content: none;
+}
+
+/* Элементы автора и текста */
+.card-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.author-info .author-status {
+    color: #888;
+    font-size: 14px;
+}
+
+.testimonial-card .rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 15px;
+}
+
+.testimonial-card .rating img {
+    width: 16px;
+    height: 16px;
+}
+
+.card-text {
+    color: #555;
+    line-height: 1.6;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ИСПРАВЛЕНО: Контейнер для точек (убрали grid-column) */
+.slider-controls {
+    position: relative; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+    height: 48px; 
+}
+
+.btn-arrow {
+    position: absolute; 
+    top: 50%;
+    background: transparent; 
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px; 
+    height: 48px; 
+}
+
+.btn-arrow img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.arrow-left {
+    left: 0;
+    transform: translateY(-50%); 
+}
+
+.arrow-right {
+    right: 0;
+    transform: translateY(-50%) rotate(180deg); 
+}
+
+/* Контейнер для точек */
+.slider-dots {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Базовый стиль для неактивных точек */
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #a5aab5; 
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* Активная точка с ободком */
+.dot.active {
+    background: #000000; 
+    width: 20px; 
+    height: 20px;
+    border: 1px solid #a5aab5; 
+    background-clip: content-box; 
+    padding: 5px; 
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   СЕКЦИЯ: Подвал (footer)
+   ========================================================================== */
+.main-footer {
+
+    width: 100%;
+}
+
+
+.footer-cta-wrapper{
+    padding: 43px;
+    display: flex;
+}
+
+.footer-cta {
+
+    background: #ffffff;
+    border: 1px solid #f0ebe4; /* Мягкая аккуратная рамка */
+    padding: 50px 60px; /* Просторные внутренние отступы */
+    border-radius: 32px; /* Красивые скругленные углы по макету */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04); /* Легкая премиальная тень */
+}
+
+.footer-cta h2 {
+    max-width: 650px;
+    font-family: 'Fredoka', sans-serif; /* Закругленный дружелюбный шрифт из макета */
+    font-size: 34px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+}
+
+/* Контейнер для кнопок */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформироваться */
+}
+
+/* Базовый сброс и общие стили для обеих кнопок */
+.cta-orange, .cta-black {
+    border: none;
+    padding: 18px 34px;
+    border-radius: 35px; /* Полностью круглые кнопки */
+    font-family: 'Onest', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease; /* Плавная анимация */
+}
+
+.cta-orange .arrow, .cta-black .arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+/* Оранжевая кнопка */
+.cta-orange {
+    background-color: #ff7a30;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(255, 122, 48, 0.25);
+}
+
+.cta-orange:hover {
+    background-color: #e56825;
+    transform: translateY(-3px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 8px 22px rgba(255, 122, 48, 0.35);
+}
+
+/* Черная кнопка */
+.cta-black {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.cta-black:hover {
+    background-color: #252525;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(17, 17, 17, 0.2);
+}
+
+/* Движение стрелочек внутри кнопок при наведении */
+.cta-orange:hover .arrow, .cta-black:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАШКИ
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .footer-cta {
+        padding: 40px;
+        gap: 30px;
+    }
+    .footer-cta h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-cta {
+        flex-direction: column; /* Элементы встают друг под друга */
+        text-align: center;
+        padding: 40px 30px;
+    }
+    .footer-cta h2 {
+        max-width: 100%;
+    }
+    .cta-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.footer-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 120px 32px 40px 32px; /* Добавлены боковые отступы */
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #ff7a30;
+}
+
+.footer-brand p {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.orange-text {
+    color: #ff7a30;
+}

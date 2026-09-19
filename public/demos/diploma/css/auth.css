@@ -1,0 +1,566 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Onest:wght@400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+}
+
+
+.container {
+max-width: 100%; /* Теперь сайт тянется на всю ширину экрана */
+       padding: 32px;
+    width: 100%;
+}
+
+/* --- ШАПКА --- */
+.header-section {
+    width: 100%;
+    background-color: #fcfbfa;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+
+/* --- ШАПКА --- */
+.header {
+    
+    background-image: url('../assets/icons/backService.png');
+    width: 100%;
+    height: 500px; /* Фиксированная высота как просил */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    position: relative; 
+    border-radius: 40px; /* Скругляем все углы самой шапки согласно макету */
+    overflow: hidden;
+}
+
+/* --- СТИЛИ ДЛЯ ПЛАШКИ С ВНУТРЕННИМ СГЛАЖИВАНИЕМ --- */
+.header-breadcrumbs {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #fcfbfa; /* Цвет фона страницы */
+    padding: 24px 150px; /* Увеличили боковые отступы для текста */
+    
+    /* Скругляем верхние углы самой плашки */
+    border-radius: 40px 40px 0 0; 
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ЛЕВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -40px; /* Сдвигаем влево на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией: угол прозрачный, остальное закрашено фоном страницы */
+    background: radial-gradient(circle at top left, transparent 40px, #fcfbfa 41px);
+}
+
+/* ПРАВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -40px; /* Сдвигаем вправо на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией для правой стороны */
+    background: radial-gradient(circle at top right, transparent 40px, #fcfbfa 41px);
+}
+
+/* Стилизация текста внутри крошек */
+.crumb-main {
+    color: #1a1a1a;
+}
+
+.crumb-separator {
+    color: #1a1a1a;
+    margin: 0 4px;
+}
+
+.crumb-current {
+    color: #F8721F; /* Твой оранжевый цвет */
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-contacts .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header-contacts .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.header-contacts .phone-number {
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+/* 2. САМА КНОПКА (ОБЯЗАТЕЛЬНО ОБНОВИ ЕЁ) */
+.btn {
+    display: inline-flex;    /* МЕНЯЕМ inline-block НА inline-flex (это решит проблему) */
+    align-items: center;     /* Центрирует текст внутри кнопки по вертикали */
+    justify-content: center; /* Центрирует текст внутри кнопки по горизонтали */
+    padding: 14px 28px;
+    border-radius: 100px;    /* Делает идеальную капсулу */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;          /* Сбрасывает невидимые отступы шрифта, которые двигали текст */
+    white-space: nowrap;     /* Запрещает тексту ломаться на две строчки */
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 9px 28px;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #F8721F;
+}
+
+/* Нижнее изображение */
+.booking-footer-line {
+margin-top: 60PX;
+margin-bottom: 80px;
+    background-color: #fcfbfa;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    z-index: 3;     
+
+}
+
+.booking-footer-line img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Контейнер формы */
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+}
+
+/* Верхняя вкладка "Зарегистрироваться" */
+.auth-tab {
+  background-color: #e87e3c;
+  color: white;
+  width: max-content;
+  padding: 12px 35px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px 4px 0 0;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Белая карточка формы */
+.auth-form {
+  background: #ffffff;
+  padding: 40px;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 4px 4px; /* Оставляем верх прямым под вкладку */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Поля ввода */
+.input-group input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid #f0f0f0;
+  background-color: #f5f5f7;
+  border-radius: 30px;
+  font-size: 15px;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #8e8e93;
+}
+
+.input-group input:focus {
+  background-color: #fff;
+  border-color: #e87e3c;
+  box-shadow: 0 0 0 3px rgba(232, 126, 60, 0.1);
+}
+
+/* Чекбокс "Запомнить пароль" */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.remember-me input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #d1d1d6;
+  border-radius: 50%; /* Круглый чекбокс как на скрине */
+  outline: none;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all 0.2s ease;
+}
+
+.remember-me input[type="checkbox"]:checked {
+  background-color: #e87e3c;
+  border-color: #e87e3c;
+}
+
+.remember-me input[type="checkbox"]:checked::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Кнопка "Авторизоваться" */
+.auth-submit-btn {
+  background-color: #e87e3c;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+  background-color: #d66f2f;
+}
+
+/* Ссылка "Забыли пароль?" */
+.forgot-password {
+  color: #e87e3c;
+  text-decoration: none;
+  font-size: 14px;
+  align-self: flex-start;
+  margin-top: 5px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+
+    width: 100%;
+}
+
+
+.footer-cta-wrapper{
+    padding: 43px;
+    display: flex;
+}
+
+.footer-cta {
+
+    background: #ffffff;
+    border: 1px solid #f0ebe4; /* Мягкая аккуратная рамка */
+    padding: 50px 60px; /* Просторные внутренние отступы */
+    border-radius: 32px; /* Красивые скругленные углы по макету */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04); /* Легкая премиальная тень */
+}
+
+.footer-cta h2 {
+    max-width: 650px;
+    font-family: 'Fredoka', sans-serif; /* Закругленный дружелюбный шрифт из макета */
+    font-size: 34px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+}
+
+/* Контейнер для кнопок */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформироваться */
+}
+
+/* Базовый сброс и общие стили для обеих кнопок */
+.cta-orange, .cta-black {
+    border: none;
+    padding: 18px 34px;
+    border-radius: 35px; /* Полностью круглые кнопки */
+    font-family: 'Onest', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease; /* Плавная анимация */
+}
+
+.cta-orange .arrow, .cta-black .arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+/* Оранжевая кнопка */
+.cta-orange {
+    background-color: #ff7a30;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(255, 122, 48, 0.25);
+}
+
+.cta-orange:hover {
+    background-color: #e56825;
+    transform: translateY(-3px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 8px 22px rgba(255, 122, 48, 0.35);
+}
+
+/* Черная кнопка */
+.cta-black {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.cta-black:hover {
+    background-color: #252525;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(17, 17, 17, 0.2);
+}
+
+/* Движение стрелочек внутри кнопок при наведении */
+.cta-orange:hover .arrow, .cta-black:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАШКИ
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .footer-cta {
+        padding: 40px;
+        gap: 30px;
+    }
+    .footer-cta h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-cta {
+        flex-direction: column; /* Элементы встают друг под друга */
+        text-align: center;
+        padding: 40px 30px;
+    }
+    .footer-cta h2 {
+        max-width: 100%;
+    }
+    .cta-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.footer-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 120px 32px 40px 32px; /* Добавлены боковые отступы */
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #ff7a30;
+}
+
+.footer-brand p {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.orange-text {
+    color: #ff7a30;
+}

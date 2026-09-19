@@ -41,6 +41,32 @@ export type Profile = {
 
 export const projects: Project[] = [
   {
+    slug: "diploma-grooming",
+    title: "Flutt — Сервис груминга питомцев (Дипломная работа)",
+    shortTitle: "Дипломная работа / Flutt",
+    category: "Frontend & UI/UX",
+    year: "2024",
+    role: "UI/UX Design & Frontend Development",
+    cover: "/projects/diploma-cover.png",
+    gallery: [
+      "/projects/diploma-cover.png",
+      "/projects/diploma-detail.png"
+    ],
+    summary:
+      "Дипломный проект: многостраничный интерактивный веб-сервис для салона груминга Flutt с каталогом услуг, блогом, видеоинструкциями и формой онлайн-бронирования.",
+    body:
+      "Комплексная дипломная работа по дизайну и фронтенд-разработке веб-приложения для груминг-салона Flutt.\n\nВ проекте спроектирована целостная дизайн-система и реализована многостраничная адаптивная вёрстка (Главная, О нас, Услуги, Блог, Команда, Авторизация).\n\nСайт полностью интерактивен: настроена анимация карточек, слайдеры, видеоплеер, формы записи и валидация данных.",
+    figmaUrl: "https://www.figma.com/design/demo-flutt-grooming-diploma",
+    liveUrl: "/demos/diploma/html/main.html",
+    tags: ["HTML5", "CSS3", "JavaScript", "UI/UX Design", "Figma", "Responsive"],
+    deliverables: [
+      "UI/UX дизайн-макет",
+      "Многостраничная верстка",
+      "Интерактивные скрипты",
+      "Адаптивный дизайн (Mobile & Desktop)"
+    ]
+  },
+  {
     slug: "lumine",
     title: "Website / Бренд янтарных украшений (Amber jewelry brand)",
     shortTitle: "LUMINE / Ювелирный бренд",
@@ -48,64 +74,24 @@ export const projects: Project[] = [
     year: "2024",
     role: "UI/UX & Visual Design",
     cover: "/projects/lumine-cover.jpg",
-    gallery: ["/projects/lumine-cover.jpg", "/projects/lumine-detail.jpg"],
+    gallery: [
+      "/projects/lumine-cover.jpg",
+      "/projects/lumine-detail.jpg"
+    ],
     summary:
       "Концепт премиального сайта для бренда украшений из янтаря: утончённая типографика, свободное пространство и крупные кадры изделий.",
-    body: "Концепт интернет-магазина для бренда авторских янтарных украшений LUMINE.\n\nГлавный экран строится вокруг крупного названия и атмосферного портрета, погружая пользователя в эстетику бренда. Далее представлена интерактивная сетка изделий с фильтрацией по коллекциям, блок об истории и происхождении балтийского янтаря, а также интуитивный чекаут в 2 шага.\n\nПроект разработан с фокусом на mobile-first опыт, лёгкую навигацию и визуальное наслаждение продуктом.",
+    body:
+      "Концепт интернет-магазина для бренда авторских янтарных украшений LUMINE.\n\nГлавный экран строится вокруг крупного названия и атмосферного портрета, погружая пользователя в эстетику бренда. Далее представлена интерактивная сетка изделий с фильтрацией по коллекциям, блок об истории и происхождении балтийского янтаря, а также интуитивный чекаут в 2 шага.\n\nПроект опубликован на Behance с детальной презентацией дизайн-решений.",
     figmaUrl: "https://www.figma.com/design/demo-lumine-jewelry-concept",
     liveUrl: "https://www.behance.net/gallery/245066905/Websitebrend-jantarnyh-ukrashenijAmber-jewelry-brand",
-    tags: ["Figma", "UI/UX", "Web Design", "E-Commerce", "Design System"],
+    tags: ["Figma", "UI/UX", "Web Design", "Behance", "Branding"],
     deliverables: [
       "Дизайн-система",
       "UI Kit",
       "Прототип мобильной версии",
-      "Адаптивный десктоп",
-    ],
-  },
-  {
-    slug: "lobby",
-    title: "LOBBY — Concept Online Shop",
-    shortTitle: "Concept online-shop",
-    category: "Fashion & Retail",
-    year: "2024",
-    role: "Product & Interaction Design",
-    cover: "/projects/lobby-cover.jpg",
-    gallery: ["/projects/lobby-cover.jpg", "/projects/lobby-detail.jpg"],
-    summary:
-      "Минималистичный интернет-магазин концептуальной одежды: акцент на визуале товара, монохромной палитре и бесшовном пользовательском пути.",
-    body: "Концепт современного онлайн-ритейла в духе концепт-стора LOBBY.\n\nОсновная задача — убрать визуальный шум и направить фокус покупателя на текстуры тканей, крой и стиль. В проекте реализованы карточки товаров с быстрой сменой ракурсов при ховере/тапе, интерактивный lookbook со стилизацией образов и минималистичная корзина со свайп-удалением.\n\nДизайн разработан в строгой тёмной и светлой палитре с глубоким вниманием к микро-взаимодействиям.",
-    figmaUrl: "https://www.figma.com/design/demo-lobby-concept-shop",
-    liveUrl: "/demos/lobby/index.html",
-    tags: ["UI/UX", "Mobile First", "Figma", "E-Commerce", "Minimalism"],
-    deliverables: [
-      "UX Research",
-      "Wireframes",
-      "UI Дизайн",
-      "Интерактивный кликабельный прототип",
-    ],
-  },
-  {
-    slug: "tutor-landing",
-    title: "Лендинг для частного репетитора",
-    shortTitle: "Лендинг для репетитора",
-    category: "EdTech & Landing Page",
-    year: "2023",
-    role: "UI/UX & Web Design",
-    cover: "/projects/tutor-cover.jpg",
-    gallery: ["/projects/tutor-cover.jpg", "/projects/tutor-detail.jpg"],
-    summary:
-      "Конверсионный лендинг с чётким оффером, интерактивным калькулятором программы, социальными доказательствами и формой быстрой записи.",
-    body: "Одностраничный промо-сайт для преподавателя и автора авторской методики подготовки.\n\nСтруктура страницы спроектирована для максимального доверия родителей и учеников: чёткий оффер с таймлайном результатов, видеовизитка, блок «как проходят онлайн-занятия», живые кейсы с результатами экзаменов и интерактивная форма записи на диагностический урок.\n\nСайт полностью оптимизирован под мобильные экраны и мессенджер-маркетинг.",
-    figmaUrl: "https://www.figma.com/design/demo-tutor-landing-edtech",
-    liveUrl: "/demos/tutor-landing/index.html",
-    tags: ["Landing Page", "Conversion UX", "Figma", "EdTech"],
-    deliverables: [
-      "Прототипирование",
-      "Копирайтинг & структура",
-      "UI Дизайн",
-      "Адаптивные экраны",
-    ],
-  },
+      "Behance презентация"
+    ]
+  }
 ];
 
 export const profile: Profile = {
@@ -122,12 +108,12 @@ export const profile: Profile = {
   telegram: "@koooki0",
   telegramUrl: "https://t.me/koooki0",
   telegramLabel: "@koooki0",
-  focus: ["UI/UX", "Web Design", "Mobile Apps", "Design Systems"],
+  focus: ["UI/UX", "Web Design", "Frontend (HTML/CSS/JS)", "Design Systems"],
   memberSince: "SEP 18, 2026",
   avatar: "/avatar.jpg",
   shareTitle: "Молдоисаева Алия — Product & UI/UX Designer",
   shareText: "Портфолио продуктового и UI/UX дизайнера Молдоисаевой Алии",
-  projects: projects,
+  projects: projects
 };
 
 export function getProject(slug: string): Project | undefined {

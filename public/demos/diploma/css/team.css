@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Onest:wght@400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+}
+
+/* 
+   НОВЫЙ ГЛОБАЛЬНЫЙ ОГРАНИЧИТЕЛЬНЫЙ КЛАСС (Вместо старого жесткого .wrapper)
+   Он автоматически центрирует контент внутри любого блока и создает безопасные отступы по бокам,
+   не ломая фоновые цвета самих родительских секций.
+*/
+.container {
+max-width: 100%; /* Теперь сайт тянется на всю ширину экрана */
+       padding: 32px;
+    width: 100%;
+}
+
+/* --- ШАПКА --- */
+.header-section {
+    width: 100%;
+    background-color: #fcfbfa;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+
+/* --- ШАПКА --- */
+.header {
+    
+    background-image: url('../assets/icons/backService.png');
+    width: 100%;
+    height: 500px; /* Фиксированная высота как просил */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    position: relative; 
+    border-radius: 40px; /* Скругляем все углы самой шапки согласно макету */
+    overflow: hidden;
+}
+
+/* --- СТИЛИ ДЛЯ ПЛАШКИ С ВНУТРЕННИМ СГЛАЖИВАНИЕМ --- */
+.header-breadcrumbs {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #fcfbfa; /* Цвет фона страницы */
+    padding: 24px 150px; /* Увеличили боковые отступы для текста */
+    
+    /* Скругляем верхние углы самой плашки */
+    border-radius: 40px 40px 0 0; 
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ЛЕВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -40px; /* Сдвигаем влево на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией: угол прозрачный, остальное закрашено фоном страницы */
+    background: radial-gradient(circle at top left, transparent 40px, #fcfbfa 41px);
+}
+
+/* ПРАВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -40px; /* Сдвигаем вправо на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией для правой стороны */
+    background: radial-gradient(circle at top right, transparent 40px, #fcfbfa 41px);
+}
+
+.btn {
+    display: inline-flex;    /* МЕНЯЕМ inline-block НА inline-flex (это решит проблему) */
+    align-items: center;     /* Центрирует текст внутри кнопки по вертикали */
+    justify-content: center; /* Центрирует текст внутри кнопки по горизонтали */
+    padding: 14px 28px;
+    border-radius: 100px;    /* Делает идеальную капсулу */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;          /* Сбрасывает невидимые отступы шрифта, которые двигали текст */
+    white-space: nowrap;     /* Запрещает тексту ломаться на две строчки */
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 9px 28px;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #ffaa00;
+}
+
+/* Стилизация текста внутри крошек */
+.crumb-main {
+    color: #1a1a1a;
+}
+
+.crumb-separator {
+    color: #1a1a1a;
+    margin: 0 4px;
+}
+
+.crumb-current {
+    color: #F8721F; /* Твой оранжевый цвет */
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-contacts .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header-contacts .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.header-contacts .phone-number {
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+
+
+
+
+
+
+
+
+/* Контейнер секции с фиксированными размерами из ТЗ */
+.team-section {
+    width: 100%; /* Убираем фиксированные 1440px для адаптивности */
+    max-width: 1440px; /* Ограничиваем максимальную ширину */
+    min-height: 867px; /* Вместо жесткой height используем min-height */
+    margin: 0 auto;
+    
+    background-image: url('../assets/icons/back5.png');
+    
+    /* Изменяем cover на contain, чтобы картинка не обрезалась и встала ровно вверху */
+    background-size: 100% auto; 
+    background-position: center top;
+    background-repeat: no-repeat;
+    
+    /* Делаем отступы адаптивными */
+    padding: 80px 20px 180px 20px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-container {
+    width: 100%;
+    max-width: 1240px; /* Ограничиваем ширину контента внутри 1440px */
+    padding: 0 20px;
+    
+}
+
+/* Шапка секции */
+.team-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.badge {
+    display: inline-block;
+    font-family: 'Onest', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ff6b35; /* Оранжевый цвет текста */
+    border: 1.5px solid #ff6b35;
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-bottom: 20px;
+}
+
+.team-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: -0.5px;
+}
+
+/* Сетка для карточек */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+/* Карточка */
+.expert-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04); /* Легкая тень */
+    display: flex;
+    flex-direction: column;
+    
+    height: 100%;
+}
+
+/* Обертка для фото и рейтинга */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 320px; /* Высота подгоняется под макет */
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы фото не сжималось */
+    display: block;
+}
+
+/* Оранжевая плашка рейтинга */
+.rating1 {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #ff6b35;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    
+}
+.rating1 img{
+    
+}
+
+/* Нижняя текстовая часть карточки */
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 6px 8px 6px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #8c8c8c;
+    line-height: 1.4;
+}
+
+/* Кнопка "Поделиться" */
+.share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #f0f0f0;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Чтобы кнопка не сжималась */
+    margin-left: 8px;
+}
+
+.share-btn:hover {
+    background-color: #fff4f0;
+    border-color: #ff6b35;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+
+    width: 100%;
+}
+
+
+.footer-cta-wrapper{
+    padding: 43px;
+    display: flex;
+}
+
+.footer-cta {
+
+    background: #ffffff;
+    border: 1px solid #f0ebe4; /* Мягкая аккуратная рамка */
+    padding: 50px 60px; /* Просторные внутренние отступы */
+    border-radius: 32px; /* Красивые скругленные углы по макету */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04); /* Легкая премиальная тень */
+}
+
+.footer-cta h2 {
+    max-width: 650px;
+    font-family: 'Fredoka', sans-serif; /* Закругленный дружелюбный шрифт из макета */
+    font-size: 34px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+}
+
+/* Контейнер для кнопок */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформироваться */
+}
+
+/* Базовый сброс и общие стили для обеих кнопок */
+.cta-orange, .cta-black {
+    border: none;
+    padding: 18px 34px;
+    border-radius: 35px; /* Полностью круглые кнопки */
+    font-family: 'Onest', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease; /* Плавная анимация */
+}
+
+.cta-orange .arrow, .cta-black .arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+/* Оранжевая кнопка */
+.cta-orange {
+    background-color: #ff7a30;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(255, 122, 48, 0.25);
+}
+
+.cta-orange:hover {
+    background-color: #e56825;
+    transform: translateY(-3px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 8px 22px rgba(255, 122, 48, 0.35);
+}
+
+/* Черная кнопка */
+.cta-black {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.cta-black:hover {
+    background-color: #252525;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(17, 17, 17, 0.2);
+}
+
+/* Движение стрелочек внутри кнопок при наведении */
+.cta-orange:hover .arrow, .cta-black:hover .arrow {
+    transform: translateX(4px);
+}
+
+
+
+/* Нижнее изображение */
+.booking-footer-line {     
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    z-index: 3;
+    padding-bottom: 50px            
+}
+
+.booking-footer-line img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАШКИ
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .footer-cta {
+        padding: 40px;
+        gap: 30px;
+    }
+    .footer-cta h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-cta {
+        flex-direction: column; /* Элементы встают друг под друга */
+        text-align: center;
+        padding: 40px 30px;
+    }
+    .footer-cta h2 {
+        max-width: 100%;
+    }
+    .cta-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.footer-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 120px 32px 40px 32px; /* Добавлены боковые отступы */
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #ff7a30;
+}
+
+.footer-brand p {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.orange-text {
+    color: #ff7a30;
+}

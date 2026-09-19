@@ -1,0 +1,2589 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Onest:wght@400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+}
+
+/* 
+   НОВЫЙ ГЛОБАЛЬНЫЙ ОГРАНИЧИТЕЛЬНЫЙ КЛАСС (Вместо старого жесткого .wrapper)
+   Он автоматически центрирует контент внутри любого блока и создает безопасные отступы по бокам,
+   не ломая фоновые цвета самих родительских секций.
+*/
+.container {
+max-width: 100%; /* Теперь сайт тянется на всю ширину экрана */
+    padding: 32px; /* Безопасные отступы, чтобы контент не прилипал к краям дисплея */
+    width: 100%;
+}
+
+/* --- ШАПКА --- */
+.header-section {
+    width: 100%;
+    background-color: #fcfbfa;
+}
+
+/* --- ШАПКА --- */
+.header {
+    background-image: url('../assets/icons/headermain.png');
+    width: 100%;
+    /* ИСПРАВЛЕНО: убираем жесткие 959px, делаем гибкую минимальную высоту */
+    min-height: 90vh; 
+    background-repeat: no-repeat;
+background-size: 100% 100%;
+    background-position: center;
+    border-radius: 40px;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px; /* Чтобы элементы не слипались при уменьшении высоты */
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-contacts .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header-contacts .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.header-contacts .phone-number {
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+/* 2. САМА КНОПКА (ОБЯЗАТЕЛЬНО ОБНОВИ ЕЁ) */
+.btn {
+    display: inline-flex;    /* МЕНЯЕМ inline-block НА inline-flex (это решит проблему) */
+    align-items: center;     /* Центрирует текст внутри кнопки по вертикали */
+    justify-content: center; /* Центрирует текст внутри кнопки по горизонтали */
+    padding: 14px 28px;
+    border-radius: 100px;    /* Делает идеальную капсулу */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;          /* Сбрасывает невидимые отступы шрифта, которые двигали текст */
+    white-space: nowrap;     /* Запрещает тексту ломаться на две строчки */
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 9px 28px;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #ffaa00;
+}
+
+
+
+/* Дальше твои стили для цветов кнопок остаются без изменений */
+.btn-primary {
+    background-color: #F8721F;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #F8721F;
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}
+.header-body {
+    display: flex;
+    align-items: start;
+    flex-grow: 1;
+}
+
+.header-info {
+    max-width: 765px;
+    padding-top: 15px;
+}
+
+.header-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 84px;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+.header-title .highlight {
+    color: #F8721F;
+}
+
+.header-text {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 16px;
+    /* 1. Запрещаем кнопкам растягивать друг друга по высоте */
+    align-items: center; 
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #1a1a1a;
+    position: relative;
+}
+
+.rating {
+    font-size: 16px;
+    color: #666666;
+    max-width: 400px;
+    margin-bottom: 90px;
+}
+
+.badge-circle {
+    position: absolute;
+    top: 70px;
+    left: 50%; 
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-circle img {
+    position: absolute;
+}
+
+.stats {
+    display: flex;
+    gap: 70px;
+    border-radius: 24px 24px 0 0;
+    height: 120px;
+    align-items: center;
+    padding: 0 40px;
+    transform: translateY(-40px);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 36px;
+}
+
+.stat-desc {
+    font-size: 14px;
+    color: #666666;
+}
+
+/* --- БЛОК 2 (НАША ИСТОРИЯ) --- */
+.block2 {
+    width: 100%;
+    min-height: 875px; 
+    background-color: #fbf9f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Убираем лишний жесткий max-width, так как теперь есть класс .container */
+.block2-container {
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    width: 100%; /* Убедимся, что контейнер растягивается */
+    max-width: 1440px; /* Задайте максимальную ширину вашей контентной зоны (например, 1200px) */
+    margin: 0 auto; /* Центрируем контент */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.block2-content {
+flex: 0 1 540px; /* Запрещаем ей бесконтрольно растягиваться, базовый размер 540px */
+    width: 100%;
+}
+
+.badge-history {
+    display: flex;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.badge-icon {
+    height: 48px;
+    width: auto;
+}
+
+.block2-content h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 44px;
+    color: #0c1c24;
+    line-height: 1.25;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+}
+
+.block2-description {
+    color: #687277;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.features-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 0;
+    margin-bottom: 40px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 50%;
+    box-sizing: border-box;
+    color: #0c1c24;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.check-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.block2-contacts {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.btn-more {
+    display: inline-block;
+    background-color: #ff6a22;
+    color: #ffffff;
+    padding: 16px 36px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-more:hover {
+    background-color: #e05514;
+    transform: translateY(-2px);
+}
+
+.phone-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.phone-circle {
+    width: 54px;
+    height: 54px;
+    border: 1px solid #A1A4B1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.phone-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.phone-block .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    color: #02000F !important;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.phone-block .phone-number {
+    display: block;
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6C6D71 !important;
+    text-decoration: none;
+    line-height: 1.2;
+    transition: color 0.2s;
+}
+
+.phone-block .phone-number:hover {
+    color: #ff6a22 !important;
+}
+
+.block2-media {
+flex: 1; /* Жестко фиксируем базовый размер коллажа на 580px, чтобы он не сжимался */
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.main-collage {
+    width: 100%;
+    height: auto;
+    display: block;
+
+}
+
+.badge-paws {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffb624;
+    color: #ffffff;
+    width: 23.5%;
+    height: 27.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 2;
+}
+
+.badge-paws h2 {
+    font-family: 'Onest';
+    font-size: clamp(20px, 2.5vw, 32px);
+    margin: 0 0 2px 0;
+    line-height: 1;
+}
+
+.badge-paws p {
+    font-family: 'Onest', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .block2-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    .badge-history {
+        justify-content: center;
+    }
+    .features-flex {
+        max-width: 450px;
+        margin: 0 auto 30px auto;
+    }
+    .feature-item {
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: 15%;
+    }
+    .block2-contacts {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .block2-media {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* --- БЛОК 3 --- */
+.block3 { 
+    width: 100%; 
+    min-height: 1082px;
+    position: relative;
+    background-color: #fcfbfa;
+}
+
+.block3-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 68px;
+    padding-right: 68px;
+}
+
+.block3-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.block3-titles {
+    max-width: 750px;
+}
+
+.block3-subtitle {
+    font-family: 'Fredoka', sans-serif;
+    color: #ff7d45;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.subtitle-wave {
+    display: block;
+    margin-top: 4px;
+}
+
+.block3-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin-top: 10px;
+}
+
+.block3-btn-all {
+    font-family: 'Onest', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid #cbcbcb;
+    border-radius: 50px;
+}
+
+/* Изменено: теперь это маска-окно для слайдера */
+.block3-cards {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+/* НОВОЕ: Бегущая дорожка для карточек */
+.b3-cards-track {
+    display: flex;
+    gap: 24px; /* Твой оригинальный шаг gap */
+    transition: transform 0.4s ease-in-out; /* Плавный сдвиг */
+    width: 100%;
+}
+
+/* Изменено: Жестко задаем ширину карточки, чтобы в окне помещалось ровно 3 штуки */
+.b3-card {
+    position: relative;
+    flex: 0 0 calc((100% - 48px) / 3); /* 48px — это 2 зазора по 24px */
+    height: 520px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.b3-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.b3-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+
+.b3-card-badge {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 80px;
+    height: 80px;
+    background-color: #fcfbfa;
+    border-bottom-left-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.b3-card-arrow {
+    width: 46px;
+    height: 46px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.b3-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.b3-card-info h3 {
+    font-family: 'Onest', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.b3-card-info p {
+    font-family: 'Onest', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.block3-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.b3-control-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #cbcbcb;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.b3-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.b3-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #cbcbcb;
+}
+
+.b3-dot.active {
+    background-color: #1a1a1a;
+}
+
+
+/* --- ИСПРАВЛЕННЫЙ БЛОК 4 (ПОЧЕМУ ВЫБИРАЮТ НАС?) --- */
+.ChoseBlock4 {
+    width: 100%;
+    background-color: #f7f4ee; /* Твой желтый цвет теперь красит всю ширину окна браузера! */
+}
+
+/* Контейнер убирает внешние белые поля, но держит элементы по центру */
+.block4-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 32px; /* Оставляем красивый нижний отступ */
+}
+
+.block4-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.block4-header h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.block4-subtitle {
+    font-family: 'Onest', sans-serif;
+    font-size: 16px;
+    color: #6e6d6a;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.block4-interactive-space {
+    position: relative;
+    height: 380px;
+    margin-bottom: -55px;
+    z-index: 2;
+
+}
+
+.img-dog {
+    position: absolute;
+    left: 125px;
+    top: -160px;
+    width: 290px;
+    height: auto;
+}
+
+.img-cat {
+    position: absolute;
+    bottom: -71px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 413px;
+    height: auto;
+    z-index: 10;
+}
+
+.advantage-item {
+    position: absolute;
+    text-align: center;
+    width: 210px;
+}
+
+.adv-number {
+    display: inline-block;
+    font-family: 'Fredoka';
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #ffffff;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.adv-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #000000;
+    
+}
+
+.adv-1 { left: 55px; top: 100px; }
+.adv-2 { left: 320px; top: 50px; }
+.adv-3 { left: 50%; transform: translateX(-50%); top: -20px; width: 250px; }
+.adv-4 { right: 320px; top: 50px; }
+.adv-5 { right: 55px; top: 100px; }
+
+.btn-schedule {
+    display: inline-block;
+    background-color: #ff7024;
+    color: #ffffff;
+    font-family: 'Onest', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 25px;
+    margin-top: 15px;
+    box-shadow: 0 4px 14px rgba(255, 112, 36, 0.25);
+    transition: background-color 0.2s ease;
+}
+
+.btn-schedule:hover {
+    background-color: #e05e1a;
+}
+.block4-video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    cursor: pointer; /* Делает курсор кликабельным при наведении */
+}
+
+.img-video-cover {
+    width: 100%;
+    height: auto;
+    /* Заставляем и картинку, и видео сохранять пропорции 16:9 */
+    aspect-ratio: 10 / 4; 
+    /* Магия: контент растягивается и обрезается под размер, без деформации */
+    object-fit: cover; 
+    display: block;
+}
+/* Стандартный атрибут hidden в HTML иногда нужно явно подкрепить в CSS */
+[hidden] {
+    display: none !important;
+}
+
+.video-play-btn {
+    position: absolute;
+    bottom: 45px;
+    right: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.play-icon-circle {
+    width: 76px;
+    height: 76px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.play-icon-circle img {
+    width: 18px;
+    height: auto;
+    margin-left: 4px;
+}
+
+.play-btn-text {
+    font-family: 'Onest', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.video-play-btn:hover .play-icon-circle {
+    transform: scale(1.06);
+    background: rgba(255, 255, 255, 0.3);
+}
+.block4-footer-ribbon {
+    margin-top: 50px; 
+    width: 100%;
+    overflow: hidden; 
+    background-color: #f7f4ee; 
+}
+
+/* Стили для нового движущегося контейнера */
+.ribbon-track {
+    display: flex;
+    width: 200%; /* Ширина 200%, так как внутри 2 картинки (каждая по 100% экрана) */
+    /* 15s - скорость анимации (сделай больше для замедления), linear - равномерная скорость, infinite - бесконечно */
+    animation: scroll 15s linear infinite; 
+}
+
+.img-ribbon {
+    width: 50%; /* 50% от ширины трека (что равняется ровно 100% ширины экрана) */
+    height: auto;
+    display: block;
+    object-fit: cover; 
+}
+
+/* Ключевые кадры анимации (движение справа налево) */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Сдвигаем ровно на одну картинку влево */
+    }
+}
+/* Главный контейнер секции */
+.helpDogBlock5 {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 60px 42px 47px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Шапка секции */
+.block5-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.history-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #F1A533;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.helpDogBlock5 h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 16px 0;
+}
+
+.helpDogBlock5 .subtitle {
+    font-size: 16px;
+    color: #666666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+/* Оранжевый контейнер (основа) */
+.block5-container {
+    background-color: #F1A533; /* Резервный цвет из макета */
+    background-image: url(../assets/icons/Background4.png);
+    width: 100%;
+    min-height: 625px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    display: flex;
+    overflow: hidden; 
+}
+
+/* Левая часть (Фото животных) */
+.block5-image-side {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.pets-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Правая часть (Контент с карточками) */
+.block5-content-side {
+    flex: 1.1; /* Чуть шире левой, чтобы карточкам было просторно */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    padding: 22px; 
+    box-sizing: border-box;
+}
+/* ==========================================
+   ЖЕЛЕЗОБЕТОННЫЙ ВАРИАНТ С ОРАНЖЕВОЙ ЗАГЛУШКОЙ
+   ========================================== */
+
+/* Сама карточка — обычный скругленный прямоугольник */
+.step-card {
+    position: relative;
+    width: 100%;
+    background: #FFFBF5; /* Цвет плашки */
+    border-radius: 30px; /* Красивое скругление всех углов */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04); /* Мягкая правильная тень */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: visible; /* Важно, чтобы углы заглушки не резались */
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Контентная часть */
+.card-icon-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    /* Большой отступ справа, чтобы текст не заходил в зону цифры */
+    padding: 35px 120px 35px 35px; 
+    box-sizing: border-box;
+}
+
+/* Оранжевая заглушка, которая "вырезает" верхний правый угол */
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;     /* Слегка перекрываем границы, чтобы не было микро-щелей */
+    right: -2px;
+    width: 95px;   /* Ширина зоны под цифру */
+    height: 75px;  /* Высота зоны под цифру */
+    border-bottom-left-radius: 30px; /* Скругление внутреннего угла выреза */
+    z-index: 2;
+}
+
+/* Блок с цифрой встает поверх оранжевой заглушки */
+.card-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 93px;  /* Чуть меньше заглушки для центрования */
+    height: 73px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111111;
+    z-index: 3; /* Выше заглушки */
+    background: transparent;
+}
+
+/* Маленькие скругления-"ушки" на стыке карточки и выреза */
+/* Левое верхнее "ушко" */
+.card-number::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px; /* Вплотную к левому краю выреза */
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    pointer-events: none;
+}
+
+/* Правое нижнее "ушко" */
+.card-number::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Вплотную к нижнему краю выреза */
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    pointer-events: none;
+}
+
+/* ------------------------------------------
+   ФИНАЛЬНЫЙ ПОДБОР ЦВЕТОВ ПОД ГРАДИЕНТ
+   ------------------------------------------ */
+
+/* Карточка 1 (Обновленный точный цвет из файла 23.12.25.png) */
+
+
+.step-card:nth-child(1)::before {
+    background-color: #f3a830;
+}
+.step-card:nth-child(1) .card-number::before,
+.step-card:nth-child(1) .card-number::after {
+    box-shadow: 5px -5px 0 5px #f3a830;
+}
+
+/* Карточка 2 (Оставили как есть, подошёл хорошо) */
+.step-card:nth-child(2)::before {
+    background-color: #EDA93D;
+}
+.step-card:nth-child(2) .card-number::before,
+.step-card:nth-child(2) .card-number::after {
+    box-shadow: 5px -5px 0 5px #EDA93D;
+}
+
+/* Карточка 3 (Вернули первоначальный точный цвет #F1A533) */
+.step-card:nth-child(3)::before {
+    background-color: #F1A533;
+}
+.step-card:nth-child(3) .card-number::before,
+.step-card:nth-child(3) .card-number::after {
+    box-shadow: 5px -5px 0 5px #F1A533;
+}
+
+/* Элементы текста */
+.card-tick {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.card-text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 10px 0;
+}
+
+.card-text p {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==========================================
+   АДАПТИВНОСТЬ
+   ========================================== */
+@media (max-width: 576px) {
+    /* На мобилках убираем этот сложный угол, делая карточку обычной */
+    .step-card {
+        border-radius: 20px;
+    }
+    .step-card::before {
+        display: none;
+    }
+    .card-icon-text {
+        padding: 24px 20px 60px 20px;
+    }
+    .card-number {
+        top: auto;
+        bottom: 15px;
+        right: 20px;
+        width: auto;
+        height: auto;
+        font-size: 22px;
+    }
+    .card-number::before,
+    .card-number::after {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* СЕКЦИЯ: Галерея (historyBlock6) */
+.gallery-section {
+    background-color: #f8f5f1;
+    width: 100%;
+    height: 925px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px; /* Отступ снизу секции */
+}
+
+/* Сетка по макету: левая большая, две узкие колонки, правая большая */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.65fr 1.15fr 0.65fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* Обертка для каждой картинки, чтобы углы не резались */
+.gallery-card {
+    overflow: hidden;
+    display: flex;
+}
+
+.gallery-item img, .gallery-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Эффект легкого наведения (опционально, для интерактивности) */
+.gallery-card:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+/* Высота для мелких картинок, чтобы они идеально заполняли колонку */
+.gallery-column .gallery-item {
+    height: calc(50% - 12px);
+}
+
+.f-section-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 45px;
+}
+
+
+.f-section-header h2{
+    font-size: 56px;
+}
+
+
+
+
+
+
+.testimonials-section {
+    background-color: white;
+    width: 100%;
+    min-height: 893px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    box-sizing: border-box;
+}
+
+.testimonials-container {
+    width: 100%;
+    max-width: 1440px; 
+    margin: 0 auto;
+    padding: 0 100px; 
+    box-sizing: border-box;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 45px;
+    gap: 15px;
+}
+
+.section-header h2 {
+    font-size: 46px;
+    margin: 0;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.testimonials-slider {
+    overflow: hidden; 
+    width: 100%;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 30px; 
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+/* Карточка отзыва */
+.testimonial-card {
+    flex: 0 0 calc((100% - 30px) / 2); 
+    background-color: #f7f4f0; 
+    border-radius: 30px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.author-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.author-status {
+    font-size: 14px;
+    color: #777777;
+}
+
+.rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.quote-icon {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
+    background: #e77c40;
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-family: Georgia, serif;
+    line-height: 0;
+    padding-top: 15px; 
+    box-sizing: border-box;
+}
+
+/* ЕДИНЫЙ БЛОК УПРАВЛЕНИЯ (СТРЕЛКИ И ТОЧКИ) */
+.slider-controls {
+    display: flex !important;    
+    justify-content: space-between;     
+    align-items: center;         
+    gap: 80px;                   /* ОТСТУП: Свободное пространство между стрелками и точками */
+    width: 100%;
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+
+/* Кнопки-стрелки в потоке флекса */
+.btn-arrow {
+    position: relative !important; 
+    top: auto !important;          
+    transform: none !important;    
+    left: auto !important;
+    right: auto !important;
+    
+    background: #e77c40; 
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px; 
+    height: 56px; 
+    color: #ffffff;
+    font-size: 24px;
+    flex-shrink: 0;                
+    transition: background 0.2s ease;
+}
+
+.btn-arrow:hover {
+    background: #d66b30; 
+}
+
+/* Контейнер точек */
+.slider-dots, .slider-dots-3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;                     
+    margin-top: 0 !important;      
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #bdc1ca; 
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Активная точка */
+.dot.active {
+    background: #000000; 
+    width: 20px; 
+    height: 20px;
+    border: 1px solid #bdc1ca; 
+    background-clip: content-box; 
+    padding: 5px; 
+    box-sizing: border-box;
+    outline: none !important;      
+    box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* СЕКЦИЯ: Команда (block8) */
+.team-section {
+    background-color: #fbf9f4;
+    width: 100%;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.underline-title {
+    font-size: 38px;
+    font-weight: 900;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.team-wrapper {
+    display: grid;
+    grid-template-columns: 0.8fr 2fr;
+    gap: 40px;
+}
+
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative; /* На всякий случай добавляем и сюда */
+}
+
+/* Элемент списка (таб) */
+.team-member-tab {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Увеличил отступ между фото и текстом, как на макете */
+    padding: 10px 0 10px 30px;
+    background: transparent;
+    cursor: pointer;
+    position: relative; /* КРИТИЧЕСКИ ВАЖНО: чтобы линия позиционировалась относительно таба! */
+}
+
+/* Базовые стили для ВСЕХ картинок */
+.team-member-tab img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent; /* Резервируем место под рамку */
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Оранжевый ободок вокруг фото ТОЛЬКО для активного */
+.team-member-tab.active img {
+    border: 1px solid #F8721F; 
+}
+
+/* Оранжевая вертикальная линия слева для активного элемента */
+.team-member-tab.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;       /* Растягиваем во всю высоту таба */
+    height: 100%; /* Линия будет высотой ровно с элемент */
+    width: 4px;   /* Толщина линии */
+    background-color: #ff6b00; /* Цвет линии */
+    border-radius: 1px;
+}
+
+/* Стили текста (упростили селекторы, чтобы работало везде внутри таба) */
+.team-member-tab h4 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #000;
+}
+
+.team-member-tab p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+/* Старый код .pAva и .team-main-card можно оставить ниже, если они используются */
+.team-main-card {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 25px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Состояние в момент переключения (карточка исчезает и слегка опускается) */
+.team-main-card.fade-out {
+    opacity: 0;
+    transform: translateY(-10px); 
+}
+.main-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+
+}
+
+.main-card-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-card-content h3 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.btn-primary{
+    padding-top: 17px;
+    padding-right: 38px;
+    padding-left: 38px;
+    padding-bottom: 17px;
+    border-radius: 50px;
+    border: 0px solid white;
+    margin-bottom: 22px;
+    width: 237px;
+
+}
+
+.main-card-content a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.member-role {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.main-card-content p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+
+
+
+
+/* СЕКЦИЯ: Сервисы (block9) */
+.services-section {
+    width: 100%;
+    height: 822px;
+}
+
+.services-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.service-card {
+    background: #F6F2ED;
+    padding:   40px 40px 10px 40px ; 
+    border-radius: 20px;
+    overflow: hidden;
+        position: relative;
+
+}
+
+.service-body {
+display: flex;
+flex-direction: column;
+gap: 8px;
+
+}
+
+.service-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.service-body .price {
+    color: #1a1a1a;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card-btn {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 14px;
+    bottom: 0;
+    right: 0;
+}
+.btn-primary1 {
+    padding-top: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 13px;
+    border-radius: 50px;
+    border: 0px solid #F8721F;
+    background-color: #F8721F;
+     color: white;
+    width: 237px;
+
+}
+.card-large img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.services-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.card-small {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    flex: 1;
+    display: flex;
+    gap: 15px;
+}
+
+.card-small img {
+    object-fit: cover;
+
+}
+
+
+
+
+/* СЕКЦИЯ: FAQ (block10) */
+.faq-section {
+    width: 100%;
+    background-color: #F6F2ED;
+    padding: 80px 40px; /* Вместо жесткой высоты используем отступы */
+}
+
+.container-faq {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    width: 100%;
+}
+
+.logo-mini {
+    margin-bottom: 20px;
+    /* Если нужно стилизовать текст "Наша история" добавьте стили сюда */
+}
+
+.faq-content h2 {
+    font-size: 44px; /* Увеличен размер шрифта, как на макете */
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #111;
+}
+
+.faq-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* Левая колонка чуть шире */
+    gap: 60px;
+    align-items: start; /* Важно: выравнивание по ВЕРХНЕМУ краю, а не по центру */
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Отступы между плашками */
+}
+
+/* Стилизация блока вопроса */
+.faq-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+/* Скрываем стандартный треугольник у summary в браузерах */
+.faq-item summary {
+    list-style: none;
+    outline: none;
+}
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: #111;
+    cursor: pointer;
+}
+
+.faq-text {
+    padding-right: 20px; /* Чтобы текст не прилипал к иконке */
+}
+
+/* --- Создаем кастомный плюсик/минус --- */
+.faq-toggle {
+    position: relative;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Горизонтальная палочка (всегда видна, основа минуса) */
+.faq-toggle::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background-color: #111;
+    border-radius: 2px;
+}
+
+/* Вертикальная палочка (образует плюс) */
+.faq-toggle::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 16px;
+    background-color: #111;
+    border-radius: 2px;
+    transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+/* Когда details открыт (open), сплющиваем вертикальную палочку (превращаем в минус) */
+.faq-item[open] .faq-toggle::after {
+    transform: scaleY(0);
+}
+
+/* --- Конец кастомного плюсика/минуса --- */
+
+.faq-answer {
+    margin-top: 16px;
+    color: #777; /* Серый цвет текста ответа, как на макете */
+    line-height: 1.6;
+    font-size: 14px;
+    padding-right: 40px; /* Оставляем воздух справа от текста */
+}
+
+.faq-image img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 992px) {
+    .faq-layout {
+        grid-template-columns: 1fr;
+    }
+    .faq-content h2 {
+        font-size: 32px;
+    }
+}
+.booking-section {
+    width: 100%;
+    height: 1112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 80px 0;
+}
+
+.container-booking {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
+}
+
+/* Верхняя текстовая часть */
+.booking-header {
+    margin-bottom: 40px;
+}
+
+.booking-header .logo-mini {
+    margin-bottom: 16px;
+}
+
+.booking-header h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.booking-header .form-desc {
+    font-size: 16px;
+    color: #8c8c8c;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* Общая большая карточка */
+.booking-card {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr; /* Пропорции картинки и формы */
+    background-color: #F6F2ED; /* Бежевый фон */
+    border-radius: 24px;
+    overflow: hidden; 
+}
+
+/* Левая часть — Картинка */
+.booking-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.booking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Правая часть — Контейнер с формой */
+.booking-form-container {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Переключатели (Табы) */
+.form-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.tab-btn {
+    background: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.tab-btn .tab-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.tab-btn .tab-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.tab-btn.active {
+    outline: 1px solid #e0dbd5; 
+}
+
+/* Сетка полей ввода формы */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.appointment-form input, 
+.appointment-form select {
+    width: 100%;
+    padding: 20px 24px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #000000;
+    outline: none;
+}
+
+.appointment-form input::placeholder {
+    color: #9e9e9e;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    padding-right: 45px;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.full-width {
+    margin-bottom: 30px;
+}
+
+.submit-btn {
+    background-color: #f26d21; 
+    color: #ffffff;
+    border: none;
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #e05c13;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ: Блог (block12)
+   ========================================================================== */
+.blog-section {
+    width: 100%;
+    height: 890px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F6F2ED; 
+    padding: 80px 0;
+}
+
+.container-blog {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
+    /* ИСПРАВЛЕНО: Убрана фиксированная высота height: 890px, чтобы контент не вылезал на футер */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-header .logo-mini {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 48px; /* ИСПРАВЛЕНО: Слегка уменьшен для средних экранов ноутбуков */
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: -0.5px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.blog-card {
+    background: transparent;
+    display: flex;
+    flex-direction: column; 
+}
+
+.blog-img {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 24px; 
+}
+
+.blog-img img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-img img {
+    transform: scale(1.03);
+}
+
+.blog-meta {
+    margin: 20px 0 12px 0;
+    display: flex;
+    gap: 24px;
+    font-size: 14px;
+    color: #555555; 
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.imgCont {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgCont img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.blog-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 24px;
+    line-height: 1.35;
+    min-height: 60px; 
+}
+
+.blog-footer {
+    border-top: 1px solid #E5E0DA; 
+    padding-top: 16px;
+    margin-top: auto; 
+}
+
+.btn-read-more {
+    text-decoration: none;
+    color: #111111;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-read-more .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.btn-read-more:hover .arrow {
+    transform: translateX(4px);
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ: Подвал (footer)
+   ========================================================================== */
+.main-footer {
+
+    width: 100%;
+}
+
+
+.footer-cta-wrapper{
+    padding: 43px;
+    display: flex;
+}
+
+.footer-cta {
+
+    background: #ffffff;
+    border: 1px solid #f0ebe4; /* Мягкая аккуратная рамка */
+    padding: 50px 60px; /* Просторные внутренние отступы */
+    border-radius: 32px; /* Красивые скругленные углы по макету */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04); /* Легкая премиальная тень */
+}
+
+.footer-cta h2 {
+    max-width: 650px;
+    font-family: 'Fredoka', sans-serif; /* Закругленный дружелюбный шрифт из макета */
+    font-size: 34px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+}
+
+/* Контейнер для кнопок */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0; /* Запрещает кнопкам сжиматься и деформироваться */
+}
+
+/* Базовый сброс и общие стили для обеих кнопок */
+.cta-orange, .cta-black {
+    border: none;
+    padding: 18px 34px;
+    border-radius: 35px; /* Полностью круглые кнопки */
+    font-family: 'Onest', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease; /* Плавная анимация */
+}
+
+.cta-orange .arrow, .cta-black .arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+/* Оранжевая кнопка */
+.cta-orange {
+    background-color: #ff7a30;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(255, 122, 48, 0.25);
+}
+
+.cta-orange:hover {
+    background-color: #e56825;
+    transform: translateY(-3px); /* Кнопка слегка приподнимается */
+    box-shadow: 0 8px 22px rgba(255, 122, 48, 0.35);
+}
+
+/* Черная кнопка */
+.cta-black {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.cta-black:hover {
+    background-color: #252525;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(17, 17, 17, 0.2);
+}
+
+/* Движение стрелочек внутри кнопок при наведении */
+.cta-orange:hover .arrow, .cta-black:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ ДЛЯ ПЛАШКИ
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .footer-cta {
+        padding: 40px;
+        gap: 30px;
+    }
+    .footer-cta h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-cta {
+        flex-direction: column; /* Элементы встают друг под друга */
+        text-align: center;
+        padding: 40px 30px;
+    }
+    .footer-cta h2 {
+        max-width: 100%;
+    }
+    .cta-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.footer-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 120px 32px 40px 32px; /* Добавлены боковые отступы */
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #ff7a30;
+}
+
+.footer-brand p {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+
+/* ==========================================================================
+   ОБЩИЕ МЕДИА-ЗАПРОСЫ ДЛЯ ВСЕХ ТРЕХ СЕКЦИЙ (Планшеты и Мобильные)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .booking-form-container {
+        padding: 40px 30px;
+    }
+    .booking-header h2, .section-header h2 {
+        font-size: 38px;
+    }
+    .footer-grid {
+        grid-template-columns: 1.2fr repeat(2, 1fr); /* Футер делится на удобные колонки */
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Запись */
+    .booking-card {
+        grid-template-columns: 1fr; 
+    }
+    .booking-image {
+        height: 350px;
+    }
+    
+    /* Блог */
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 24px;
+    }
+    
+    /* Футер плашка */
+    .footer-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    .footer-cta h2 {
+        max-width: 100%;
+        font-size: 24px;
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.cta-orange {
+    background-color: #ff7a30;
+}
+
+.cta-black {
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-content {
+    background: #1f1f1f;
+    color: #fff;
+    padding-top: 100px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #ff7a30;
+}
+
+.footer-brand p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 8px !important;
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-links ul li a:hover {
+    color: #ff7a30;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.orange-text {
+    color: #ff7a30;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-socials a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   АДАПТИВНАЯ СЕТКА ДЛЯ КОМПЬЮТЕРОВ И НОУТБУКОВ (Меньше 1440px)
+   ========================================================================== */
+
+/* Для средних экранов и ноутбуков (1200px - 1400px) */
+@media (max-width: 1400px) {
+    .header-title {
+        font-size: 64px; /* Уменьшаем огромный заголовок */
+    }
+    .nav {
+        gap: 30px; /* Сужаем отступы в меню шапки */
+    }
+    .block4-header h2 {
+        font-size: 46px; /* Корректируем Блок 4 */
+    }
+    
+    /* Блок 4: Сдвигаем абсолютные преимущества ближе к краям, чтобы они не врезались в животных */
+    .img-dog {
+        left: 60px;
+        width: 260px;
+    }
+    .adv-1 { left: 10px; }
+    .adv-2 { left: 250px; }
+    .adv-4 { right: 250px; }
+    .adv-5 { right: 10px; }
+}
+
+/* Для небольших ноутбуков (1025px - 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        padding: 24px; /* Немного уменьшаем внешние поля */
+    }
+    .header {
+        padding: 40px;
+    }
+    .header-title {
+        font-size: 52px;
+    }
+    .header-text {
+        font-size: 16px;
+    }
+    .header-text br {
+        display: none; /* Прячем жесткие переносы строк <br>, чтобы текст не ломался некрасиво */
+    }
+    .nav {
+        gap: 20px;
+    }
+    .header-contacts {
+        gap: 16px;
+    }
+    .header-contacts .phone-label {
+        font-size: 18px;
+    }
+    
+    .stats {
+        gap: 40px;
+        padding: 0 25px;
+    }
+
+    /* Блок 4: Из-за нехватки ширины превращаем абсолютное пространство в гибкий Flexbox,
+       благодаря чему текст больше никогда не налезет на собаку и кошку */
+    .block4-interactive-space {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 30px;
+        padding: 20px 0;
+    }
+    .img-dog, .img-cat {
+        position: static; /* Отменяем абсолют */
+        transform: none;
+        margin: 0 auto;
+        max-width: 260px;
+        width: 100%;
+    }
+    .advantage-item {
+        position: static; /* Становятся адаптивными карточками */
+        width: calc(50% - 20px);
+        min-width: 220px;
+    }
+    .adv-3 {
+        transform: none;
+        width: 100%;
+    }
+}
+
+/* Граница перехода на планшеты и нетбуки (Меньше 1024px) */
+@media (max-width: 1024px) {
+    .header-top {
+        flex-direction: column; /* Элементы шапки встают друг под друга */
+        gap: 20px;
+    }
+    .header-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .rating {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .badge-circle {
+        position: static;
+        transform: none;
+        margin: 20px 0;
+    }
+    .stats {
+        transform: none; /* Убираем отрицательный сдвиг вверх */
+        height: auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Блок 3: Перестраиваем карточки услуг в вертикальный ряд, чтобы им было просторно */
+    .block3-cards {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .b3-card {
+        width: 100%;
+        height: 450px;
+    }
+}

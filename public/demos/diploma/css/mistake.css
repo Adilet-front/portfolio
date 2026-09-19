@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Onest:wght@400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ 
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+}
+
+/* --- СТИЛИ ДЛЯ КАРТИНКИ 404 НА ВЕСЬ ЭКРАН --- */
+.errorImg {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 32px; /* Повторяем боковые отступы сайта */
+    margin: 40px 0 80px 0; /* Отступы сверху от шапки и снизу до футера */
+}
+
+.errorImg img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh; /* Чтобы картинка не была слишком огромной по высоте на мониторах */
+    object-fit: cover; /* Красиво масштабирует */
+    border-radius: 40px; /* Скругляем углы картинки под стиль вашей шапки */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Легкая тень для объема */
+}
+/* 
+   НОВЫЙ ГЛОБАЛЬНЫЙ ОГРАНИЧИТЕЛЬНЫЙ КЛАСС (Вместо старого жесткого .wrapper)
+   Он автоматически центрирует контент внутри любого блока и создает безопасные отступы по бокам,
+   не ломая фоновые цвета самих родительских секций.
+*/
+.container {
+max-width: 100%; /* Теперь сайт тянется на всю ширину экрана */
+       padding: 32px;
+    width: 100%;
+}
+
+/* --- ШАПКА --- */
+.header-section {
+    width: 100%;
+    background-color: #fcfbfa;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+}
+
+/* --- ШАПКА --- */
+.header {
+    
+    background-image: url('../assets/icons/backService.png');
+    width: 100%;
+    height: 500px; /* Фиксированная высота как просил */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    position: relative; 
+    border-radius: 40px; /* Скругляем все углы самой шапки согласно макету */
+    overflow: hidden;
+}
+
+/* --- СТИЛИ ДЛЯ ПЛАШКИ С ВНУТРЕННИМ СГЛАЖИВАНИЕМ --- */
+.header-breadcrumbs {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #fcfbfa; /* Цвет фона страницы */
+    padding: 24px 150px; /* Увеличили боковые отступы для текста */
+    
+    /* Скругляем верхние углы самой плашки */
+    border-radius: 40px 40px 0 0; 
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ЛЕВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -40px; /* Сдвигаем влево на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией: угол прозрачный, остальное закрашено фоном страницы */
+    background: radial-gradient(circle at top left, transparent 40px, #fcfbfa 41px);
+}
+
+/* ПРАВЫЙ КРУГЛЫЙ НАПЛЫВ (УШКО) */
+.header-breadcrumbs::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -40px; /* Сдвигаем вправо на ширину радиуса */
+    width: 40px;
+    height: 40px;
+    /* Рисуем круг инверсией для правой стороны */
+    background: radial-gradient(circle at top right, transparent 40px, #fcfbfa 41px);
+}
+
+/* Стилизация текста внутри крошек */
+.crumb-main {
+    color: #1a1a1a;
+}
+
+.crumb-separator {
+    color: #1a1a1a;
+    margin: 0 4px;
+}
+
+.crumb-current {
+    color: #F8721F; /* Твой оранжевый цвет */
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    opacity: 1;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-contacts .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header-contacts .phone-label {
+    display: block;
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.header-contacts .phone-number {
+    font-family: "Onest", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+/* 2. САМА КНОПКА (ОБЯЗАТЕЛЬНО ОБНОВИ ЕЁ) */
+.btn {
+    display: inline-flex;    /* МЕНЯЕМ inline-block НА inline-flex (это решит проблему) */
+    align-items: center;     /* Центрирует текст внутри кнопки по вертикали */
+    justify-content: center; /* Центрирует текст внутри кнопки по горизонтали */
+    padding: 14px 28px;
+    border-radius: 100px;    /* Делает идеальную капсулу */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;          /* Сбрасывает невидимые отступы шрифта, которые двигали текст */
+    white-space: nowrap;     /* Запрещает тексту ломаться на две строчки */
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 9px 28px;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #F8721F;
+}
+
+/* Нижнее изображение */
+.booking-footer-line {
+margin-top: 60PX;
+margin-bottom: 80px;
+    background-color: #fcfbfa;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    z-index: 3;     
+
+}
+
+.booking-footer-line img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Основные стили футера */
+.main-footer {
+
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+}
+
+/* Блок с волной */
+.footer-wave {
+    width: 100%;
+    line-height: 0;
+    font-size: 0; /* Убирает любые скрытые текстовые отступы */
+    margin-bottom: -1px; /* Слегка накладываем волну на нижний блок, чтобы перекрыть щель */
+    position: relative;
+    z-index: 2;
+}
+
+.footer-wave img {
+    width: 100%;
+    height: auto;
+    display: block; /* Убирает дефолтный инлайновый отступ снизу */
+}
+
+/* Контейнер сетки */
+.footer-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+        background-color: #1F1F1F; /* Темный фон как на макете */
+}
+
+/* Общие стили колонок */
+.footer-col {
+    flex: 1;
+}
+
+/* --- Левая колонка (Логотип и соцсети) --- */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    height: 40px; /* Подгони под размер лапки */
+}
+
+.logo-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo-badge {
+    border: 1px solid #ff8243;
+    color: #ff8243;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.footer-desc {
+    color: #a3a3a3;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 320px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #262626;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.social-item:hover {
+    background-color: #ff8243; /* Эффект при наведении */
+}
+
+.social-item img {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- Средняя колонка (Контакты) --- */
+/* --- Средняя колонка (Контакты) --- */
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 40px; /* Делаем одинаковые отступы слева и справа внутри колонки */
+    
+    /* Жестко задаем левую и правую линию только для этого блока */
+    border-left: 1px solid #262626; 
+    border-right: 1px solid #262626;
+    
+    /* Чтобы колонка не сжималась слишком сильно */
+    flex: 1; 
+    min-width: 280px; 
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    font-size: 11px;
+    color: #a3a3a3;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.contact-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+/* --- Правая колонка (Форма и приложения) --- */
+.action-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #ff8243;
+    font-weight: 700;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 15px; /* Задает фиксированный отступ между инпутом и кнопкой */
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.subscribe-form input {
+    background-color: #ffffff; /* Белый фон теперь у самого инпута */
+    color: #1a1a1a;
+    border: none;
+    outline: none;
+    padding: 15px 25px; /* Увеличил внутренние отступы для высоты */
+    border-radius: 30px; /* Круглые края как на макете */
+    flex: 1; /* Инпут забирает все доступное пространство */
+    font-family: 'Onest', sans-serif;
+    font-size: 14px;
+}
+
+.subscribe-form button {
+    background-color: #e0692a; /* Оранжевый цвет кнопки */
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 15px 35px; /* Хорошие отступы по бокам */
+    border-radius: 30px; /* Круглые края */
+    font-family: 'Onest', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap; /* Чтобы текст кнопки не переносился */
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+    background-color: #c9561e; /* Эффект при наведении */
+}
+.apps-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.app-btn img {
+    height: 55px;
+    display: block;
+}
+
+/* --- Нижняя плашка (Copyright) --- */
+.footer-bottom {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+    background-color: #1F1F1F;
+}
+
+.copyright-box {
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #737373;
+}
+
+.footer-brand {
+    color: #ff8243;
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 992px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .footer-contacts {
+        border-left: none;
+        border-right: none;
+        padding-left: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top: 1px solid #262626;
+        border-bottom: 1px solid #262626;
+    }
+}
+
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.orange-text {
+    color: #ff7a30;
+}
