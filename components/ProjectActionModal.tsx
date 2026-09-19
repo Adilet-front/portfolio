@@ -3,16 +3,21 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, FileText, X, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Globe, FileText, X, ArrowUpRight, ArrowRight, Play } from "lucide-react";
 import { FigmaIcon } from "@/components/FigmaIcon";
 import type { Project } from "@/content/profile";
 
 type ProjectActionModalProps = {
   project: Project | null;
   onClose: () => void;
+  onOpenLivePreview: (project: Project) => void;
 };
 
-export function ProjectActionModal({ project, onClose }: ProjectActionModalProps) {
+export function ProjectActionModal({
+  project,
+  onClose,
+  onOpenLivePreview,
+}: ProjectActionModalProps) {
   useEffect(() => {
     if (!project) return;
 
@@ -114,12 +119,11 @@ export function ProjectActionModal({ project, onClose }: ProjectActionModalProps
             </div>
           </a>
 
-          {/* Option 2: Live Website */}
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition"
+          {/* Option 2: Live In-App Website */}
+          <button
+            type="button"
+            onClick={() => onOpenLivePreview(project)}
+            className="group w-full flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition text-left"
           >
             <div className="flex items-center gap-3.5">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
@@ -130,14 +134,14 @@ export function ProjectActionModal({ project, onClose }: ProjectActionModalProps
                   Реализованный проект
                 </div>
                 <div className="text-[12px] text-zinc-400">
-                  Смотреть живой работающий сайт
+                  Интерактивный запуск прямо в портфолио
                 </div>
               </div>
             </div>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition">
-              <ArrowUpRight size={16} />
+              <Play size={15} />
             </div>
-          </a>
+          </button>
 
           {/* Option 3: Case Study Details */}
           <Link
