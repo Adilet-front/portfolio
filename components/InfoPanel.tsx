@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MapPin, Send, ExternalLink, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { ShareButton } from "@/components/ShareButton";
 import type { Profile } from "@/content/profile";
 
 export function InfoPanel({ profile }: { profile: Profile }) {
@@ -44,20 +45,30 @@ export function InfoPanel({ profile }: { profile: Profile }) {
         <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
           Контакты и связь
         </p>
-        <a
-          href={profile.telegramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-3 text-[14px] font-medium text-zinc-100 hover:border-[#229ED9]/60 hover:bg-[#229ED9]/10 transition"
-        >
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#229ED9]/20 text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition">
-              <Send size={15} />
+        <div className="space-y-2.5">
+          <a
+            href={profile.telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-3 text-[14px] font-medium text-zinc-100 hover:border-[#229ED9]/60 hover:bg-[#229ED9]/10 transition"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#229ED9]/20 text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition">
+                <Send size={15} />
+              </div>
+              <span>{profile.telegramLabel}</span>
             </div>
-            <span>{profile.telegramLabel}</span>
+            <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition" />
+          </a>
+
+          <div className="pt-0.5">
+            <ShareButton
+              className="w-full justify-center !rounded-xl !py-3 !bg-zinc-900/80 !border-zinc-800 hover:!border-zinc-700 text-[14px]"
+              title={profile.shareTitle}
+              text={profile.shareText}
+            />
           </div>
-          <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition" />
-        </a>
+        </div>
       </section>
 
       {/* Focus */}

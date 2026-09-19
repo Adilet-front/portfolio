@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Send, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { ShareButton } from "@/components/ShareButton";
 import type { Profile } from "@/content/profile";
 
 type ProfileHeaderProps = {
@@ -14,16 +15,11 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
       {/* Banner background */}
       <div className="relative h-[130px] w-full overflow-hidden bg-gradient-to-br from-zinc-900 via-[#131316] to-[#0d0d10] border-b border-zinc-800/60">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
-        <div className="absolute right-4 top-4 flex items-center gap-2">
-          <a
-            href={profile.telegramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-[12px] font-medium text-zinc-200 backdrop-blur-md border border-white/10 hover:bg-[#229ED9] hover:border-transparent hover:text-white transition"
-          >
-            <Send size={13} />
-            <span>Telegram</span>
-          </a>
+        <div className="absolute right-4 top-4 flex items-center gap-2 z-10">
+          <ShareButton
+            title={`${profile.name} — ${profile.role}`}
+            text={profile.about}
+          />
         </div>
       </div>
 
