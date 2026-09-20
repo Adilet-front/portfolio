@@ -3,6 +3,16 @@ export type ProfileLink = {
   href: string;
 };
 
+export type Certificate = {
+  title: string;
+  issuer: string;
+  issuedAt: string;
+  credentialId: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -51,6 +61,7 @@ export type Profile = {
   strengths: string[];
   professionalSkills: string[];
   personalSkills: string[];
+  certificates: Certificate[];
   memberSince: string;
   avatar: string;
   shareTitle: string;
@@ -213,6 +224,17 @@ export const profile: Profile = {
     "Сочетаю внимательность к деталям с визуальной насмотренностью",
     "Соединяю креативность с системным мышлением",
     "Сохраняю спокойствие в работе и соблюдаю дедлайны"
+  ],
+  certificates: [
+    {
+      title: "UX/UI-дизайнер",
+      issuer: "ОсОО «ТикТек»",
+      issuedAt: "4 августа 2026 года",
+      credentialId: "KS260027832",
+      image: "/certificates/ux-ui-certificate.jpg",
+      imageWidth: 2560,
+      imageHeight: 1920
+    }
   ],
   memberSince: "марта 2026 года",
   avatar: "/avatar.jpg",

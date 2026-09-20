@@ -1,9 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, Send, ExternalLink, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import {
+  Award,
+  Calendar,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  MapPin,
+  Maximize2,
+  Send,
+  ShieldCheck,
+  X,
+} from "lucide-react";
 import { ShareButton } from "@/components/ShareButton";
-import type { Profile } from "@/content/profile";
+import type { Certificate, Profile } from "@/content/profile";
 
 function SkillSection({ title, items }: { title: string; items: string[] }) {
   return (
@@ -23,9 +36,48 @@ function SkillSection({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function CertificateArtwork({
+  certificate,
+  className = "",
+}: {
+  certificate: Certificate;
+  className?: string;
+}) {
+  return (
+    <div className={`relative aspect-[3/4] overflow-hidden bg-white ${className}`}>
+      <Image
+        src={certificate.image}
+        alt={`Сертификат «${certificate.title}»`}
+        width={certificate.imageWidth}
+        height={certificate.imageHeight}
+        sizes="(max-width: 768px) 78vw, 360px"
+        className="absolute left-1/2 top-1/2 h-auto w-[133.334%] max-w-none -translate-x-1/2 -translate-y-1/2 rotate-90"
+      />
+    </div>
+  );
+}
+
 export function InfoPanel({ profile }: { profile: Profile }) {
   const [expanded, setExpanded] = useState(false);
+  const [openCertificate, setOpenCertificate] = useState<Certificate | null>(null);
   const aboutText = expanded ? profile.aboutFull : profile.about;
+
+  useEffect(() => {
+    if (!openCertificate) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpenCertificate(null);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [openCertificate]);
 
   // Clean and robust Telegram URL: https://t.me/username
   const username = (profile.telegram || "@koooki0").replace(/^@+/, "");
@@ -62,6 +114,70 @@ export function InfoPanel({ profile }: { profile: Profile }) {
           {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
         </button>
       </section>
+
+      {/* Education and certificates */}
+      {profile.certificates.map((certificate) => (
+        <section
+          key={certificate.credentialId}
+          className="mb-7 overflow-hidden rounded-2xl border border-line bg-card"
+        >
+          <div className="grid md:grid-cols-[minmax(230px,0.8fr)_minmax(0,1fr)]">
+            <button
+              type="button"
+              onClick={() => setOpenCertificate(certificate)}
+              title="Открыть сертификат"
+              className="group flex min-h-[360px] items-center justify-center bg-surface p-5 transition hover:bg-surface-strong sm:min-h-[420px]"
+            >
+              <CertificateArtwork
+                certificate={certificate}
+                className="w-full max-w-[290px] shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition duration-300 group-hover:scale-[1.015]"
+              />
+            </button>
+
+            <div className="flex flex-col justify-center p-5 sm:p-6">
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#f27a32]/15 text-[#f27a32]">
+                <Award size={21} />
+              </div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+                Образование и сертификаты
+              </p>
+              <h2 className="mt-2 text-[22px] font-bold leading-tight text-foreground">
+                {certificate.title}
+              </h2>
+              <p className="mt-2 text-[14px] leading-6 text-foreground/75">
+                Курс профессиональной подготовки от {certificate.issuer}
+              </p>
+
+              <dl className="mt-5 space-y-3 border-y border-line py-4 text-[13px]">
+                <div className="flex items-start justify-between gap-4">
+                  <dt className="text-muted">Дата выдачи</dt>
+                  <dd className="text-right font-medium text-foreground/85">{certificate.issuedAt}</dd>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <dt className="text-muted">Номер</dt>
+                  <dd className="font-mono text-[12px] font-semibold text-foreground/85">
+                    {certificate.credentialId}
+                  </dd>
+                </div>
+              </dl>
+
+              <div className="mt-5 flex items-center gap-2 text-[12px] text-emerald-500">
+                <ShieldCheck size={15} />
+                <span>Квалификация подтверждена сертификатом</span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setOpenCertificate(certificate)}
+                className="mt-5 inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-line bg-surface px-4 text-[13px] font-semibold text-foreground transition hover:bg-surface-strong"
+              >
+                <Maximize2 size={15} />
+                <span>Посмотреть сертификат</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      ))}
 
       <SkillSection title="Мои сильные качества" items={profile.strengths} />
       <SkillSection title="Профессиональные навыки" items={profile.professionalSkills} />
@@ -110,6 +226,40 @@ export function InfoPanel({ profile }: { profile: Profile }) {
         <Calendar size={13} />
         <span>В дизайне с {profile.memberSince}</span>
       </div>
+
+      {openCertificate && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Сертификат «${openCertificate.title}»`}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setOpenCertificate(null);
+          }}
+          className="fixed inset-0 z-50 flex flex-col bg-black/92 backdrop-blur-md"
+        >
+          <div className="flex h-16 shrink-0 items-center justify-between border-b border-white/10 px-4 text-white sm:px-6">
+            <div className="min-w-0">
+              <p className="truncate text-[14px] font-semibold">{openCertificate.title}</p>
+              <p className="truncate text-[11px] text-white/55">{openCertificate.issuer}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setOpenCertificate(null)}
+              aria-label="Закрыть сертификат"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white/10 text-white transition hover:bg-white/20"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto p-4 sm:p-6">
+            <CertificateArtwork
+              certificate={openCertificate}
+              className="w-[min(92vw,68vh)] shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
