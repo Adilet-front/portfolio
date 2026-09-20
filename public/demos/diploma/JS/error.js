@@ -1,3 +1,3 @@
 setTimeout(function() {
-    window.location.href = "/html/main.html"; 
+    window.location.assign(new URL("../html/main.html", window.location.href).toString());
 }, 15000);

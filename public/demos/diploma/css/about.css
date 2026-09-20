@@ -400,31 +400,28 @@ background-size: 100% 100%;
 
 /* --- Кнопка --- */
 .backDown a {
+    display: block;
     width: 100%;
-    text-decoration: none;
-    margin-top: auto; /* Прижимает кнопку к самому низу плашки */
-    padding-top: 15px;
-}
-
-.backDown button {
-    width: 100%;
-    background-color: #e87e43; /* Фирменный оранжевый */
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #e87e43;
     color: #ffffff;
-    border: none;
     padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
     font-family: 'Onest', sans-serif;
     font-size: 16px;
     font-weight: 700;
-    border-radius: 20px;
+    margin-top: auto; /* Прижимает кнопку к самому низу плашки */
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.backDown button:hover {
+.backDown a:hover {
     background-color: #d66c32; /* Чуть темнее при наведении */
 }
 
-.backDown button:active {
+.backDown a:active {
     transform: scale(0.98); /* Эффект нажатия */
 }
 

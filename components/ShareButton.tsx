@@ -59,16 +59,16 @@ export function ShareButton({
       type="button"
       onClick={handleShare}
       aria-label="Поделиться портфолио"
-      className={`group flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-[12px] font-medium backdrop-blur-md border transition-all duration-200 ${
+      className={`group flex items-center gap-1.5 rounded-full bg-card/80 px-3 py-1.5 text-[12px] font-medium backdrop-blur-md border transition-all duration-200 ${
         copied
           ? "border-emerald-500/60 bg-emerald-950/40 text-emerald-400"
-          : "border-white/15 text-zinc-200 hover:border-white/30 hover:bg-white/10 hover:text-white"
+          : "border-line text-foreground hover:bg-surface"
       } ${className}`}
     >
       {copied ? (
         <Check size={13} className="text-emerald-400 animate-in zoom-in-50 duration-200" />
       ) : (
-        <Share2 size={13} className="text-zinc-300 group-hover:text-white transition-colors" />
+        <Share2 size={13} className="text-muted group-hover:text-foreground transition-colors" />
       )}
       <span>{copied ? "Скопировано!" : "Поделиться"}</span>
     </button>

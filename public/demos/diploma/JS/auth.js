@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
+  const navigateTo = (path) => {
+    window.location.assign(new URL(path, window.location.href).toString());
+  };
 
   // 1. Обработка отправки формы авторизации (на странице auth.html)
   if (loginForm) {
@@ -14,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.reset(); 
         
         // После успешного входа перенаправляем обратно на главную
-        window.location.href = 'main.html';
+        navigateTo('main.html');
       }
     });
   }
@@ -30,11 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (isAuthorized) {
         // ЕСЛИ АВТОРИЗОВАН: отправляем на страницу about.html прямо к ID секции бронирования!
-        window.location.href = 'about.html#auth-section';
+        navigateTo('about.html#auth-section');
       } else {
         // ЕСЛИ НЕ АВТОРИЗОВАН: просим сначала войти
         alert('Пожалуйста, авторизуйтесь для бронирования.');
-        window.location.href = 'auth.html'; 
+        navigateTo('auth.html');
       }
     }
   });
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isAuthorized) {
         alert('Для записи на прием необходимо сначала авторизоваться на сайте.');
-        window.location.href = 'auth.html';
+        navigateTo('auth.html');
       } else {
         const targetBlock = document.getElementById('booking-container');
         if (targetBlock) {
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isAuthorized) {
         alert('Вы уже авторизованы в системе!');
       } else {
-        window.location.href = 'auth.html';
+        navigateTo('auth.html');
       }
     }
   });
@@ -114,4 +117,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-

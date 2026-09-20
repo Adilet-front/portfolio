@@ -48,16 +48,16 @@ export function ProjectActionModal({
       aria-labelledby="modal-title"
     >
       <div
-        className="w-full max-w-lg overflow-hidden rounded-t-[28px] sm:rounded-3xl border border-zinc-800 bg-[#121214] p-5 sm:p-6 shadow-2xl"
+        className="w-full max-w-lg overflow-hidden rounded-t-[28px] border border-line bg-card p-5 text-foreground shadow-2xl sm:rounded-3xl sm:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile handle */}
-        <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-zinc-700 sm:hidden" />
+        <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-surface-strong sm:hidden" />
 
         {/* Header with Project Info */}
-        <div className="flex items-start justify-between gap-4 pb-4 border-b border-zinc-800/80">
+        <div className="flex items-start justify-between gap-4 border-b border-line pb-4">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-zinc-700/60 bg-zinc-900">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-surface">
               <Image
                 src={project.cover}
                 alt={project.title}
@@ -67,12 +67,12 @@ export function ProjectActionModal({
               />
             </div>
             <div className="min-w-0 flex-1">
-              <span className="inline-block rounded-full bg-zinc-800/80 px-2.5 py-0.5 text-[11px] font-medium text-zinc-400">
+              <span className="inline-block rounded-full bg-surface px-2.5 py-0.5 text-[11px] font-medium text-muted">
                 {project.category} · {project.year}
               </span>
               <h2
                 id="modal-title"
-                className="truncate text-[16px] sm:text-[17px] font-semibold text-white mt-1"
+                className="mt-1 truncate text-[16px] font-semibold text-foreground sm:text-[17px]"
               >
                 {project.title}
               </h2>
@@ -82,7 +82,7 @@ export function ProjectActionModal({
             type="button"
             onClick={onClose}
             aria-label="Закрыть"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700 hover:text-white transition"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition hover:bg-surface-strong hover:text-foreground"
           >
             <X size={18} />
           </button>
@@ -90,7 +90,7 @@ export function ProjectActionModal({
 
         {/* Action Options */}
         <div className="mt-4 space-y-2.5">
-          <p className="text-[12px] font-medium uppercase tracking-wider text-zinc-400 px-1">
+          <p className="px-1 text-[12px] font-medium uppercase tracking-wider text-muted">
             Куда перейти:
           </p>
 
@@ -99,22 +99,22 @@ export function ProjectActionModal({
             href={project.figmaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-[#a259ff]/60 hover:bg-[#a259ff]/10 transition"
+            className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-3.5 transition hover:border-[#a259ff]/60 hover:bg-[#a259ff]/10"
           >
             <div className="flex items-center gap-3.5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-800/90 group-hover:scale-105 transition-transform">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-surface-strong transition-transform group-hover:scale-105">
                 <FigmaIcon size={22} />
               </div>
               <div>
-                <div className="text-[15px] font-semibold text-zinc-100 group-hover:text-white">
+                <div className="text-[15px] font-semibold text-foreground">
                   Figma макет
                 </div>
-                <div className="text-[12px] text-zinc-400">
+                <div className="text-[12px] text-muted">
                   Открыть дизайн, компоненты и прототип
                 </div>
               </div>
             </div>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-[#a259ff] group-hover:text-white transition">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-strong text-muted transition group-hover:bg-[#a259ff] group-hover:text-white">
               <ArrowUpRight size={16} />
             </div>
           </a>
@@ -124,22 +124,22 @@ export function ProjectActionModal({
             <button
               type="button"
               onClick={() => onOpenLivePreview(project)}
-              className="group w-full flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition text-left"
+              className="group flex w-full items-center justify-between rounded-2xl border border-line bg-surface p-3.5 text-left transition hover:border-emerald-500/60 hover:bg-emerald-500/10"
             >
               <div className="flex items-center gap-3.5">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
                   <Globe size={22} />
                 </div>
                 <div>
-                  <div className="text-[15px] font-semibold text-zinc-100 group-hover:text-white">
+                  <div className="text-[15px] font-semibold text-foreground">
                     Реализованный проект
                   </div>
-                  <div className="text-[12px] text-zinc-400">
+                  <div className="text-[12px] text-muted">
                     Интерактивный запуск прямо в портфолио
                   </div>
                 </div>
               </div>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-strong text-muted transition group-hover:bg-emerald-500 group-hover:text-white">
                 <Play size={15} />
               </div>
             </button>
@@ -148,24 +148,24 @@ export function ProjectActionModal({
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-emerald-500/60 hover:bg-emerald-500/10 transition"
+              className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-3.5 transition hover:border-emerald-500/60 hover:bg-emerald-500/10"
             >
               <div className="flex items-center gap-3.5">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
                   <Globe size={22} />
                 </div>
                 <div>
-                  <div className="text-[15px] font-semibold text-zinc-100 group-hover:text-white">
+                  <div className="text-[15px] font-semibold text-foreground">
                     Реализованный проект
                   </div>
-                  <div className="text-[12px] text-zinc-400">
+                  <div className="text-[12px] text-muted">
                     {project.liveUrl.includes("behance.net")
                       ? "Открыть проект на Behance"
                       : "Перейти на сайт проекта"}
                   </div>
                 </div>
               </div>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-strong text-muted transition group-hover:bg-emerald-500 group-hover:text-white">
                 <ArrowUpRight size={16} />
               </div>
             </a>
@@ -175,22 +175,22 @@ export function ProjectActionModal({
           <Link
             href={`/work/${project.slug}`}
             onClick={onClose}
-            className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3.5 hover:border-blue-500/60 hover:bg-blue-500/10 transition"
+            className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-3.5 transition hover:border-blue-500/60 hover:bg-blue-500/10"
           >
             <div className="flex items-center gap-3.5">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition">
                 <FileText size={22} />
               </div>
               <div>
-                <div className="text-[15px] font-semibold text-zinc-100 group-hover:text-white">
+                <div className="text-[15px] font-semibold text-foreground">
                   Страница кейса
                 </div>
-                <div className="text-[12px] text-zinc-400">
+                <div className="text-[12px] text-muted">
                   Подробный разбор, этапы работы и экраны
                 </div>
               </div>
             </div>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 group-hover:bg-blue-500 group-hover:text-white transition">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-strong text-muted transition group-hover:bg-blue-500 group-hover:text-white">
               <ArrowRight size={16} />
             </div>
           </Link>
@@ -200,7 +200,7 @@ export function ProjectActionModal({
         <button
           type="button"
           onClick={onClose}
-          className="mt-4 w-full rounded-xl bg-zinc-800/60 py-3 text-center text-[14px] font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white transition"
+          className="mt-4 w-full rounded-xl bg-surface py-3 text-center text-[14px] font-medium text-foreground/80 transition hover:bg-surface-strong hover:text-foreground"
         >
           Закрыть
         </button>

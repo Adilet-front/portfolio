@@ -5,6 +5,24 @@ import { MapPin, Send, ExternalLink, Calendar, CheckCircle2, ChevronDown, Chevro
 import { ShareButton } from "@/components/ShareButton";
 import type { Profile } from "@/content/profile";
 
+function SkillSection({ title, items }: { title: string; items: string[] }) {
+  return (
+    <section className="mb-7 rounded-2xl border border-line bg-card p-4">
+      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+        {title}
+      </p>
+      <ul className="space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-2.5 text-[14px] leading-5 text-foreground/85">
+            <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-500" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export function InfoPanel({ profile }: { profile: Profile }) {
   const [expanded, setExpanded] = useState(false);
   const aboutText = expanded ? profile.aboutFull : profile.about;
@@ -15,24 +33,24 @@ export function InfoPanel({ profile }: { profile: Profile }) {
   const telegramDisplay = `@${username}`;
 
   return (
-    <div className="px-5 pb-20 pt-6 animate-in fade-in duration-200">
+    <div className="px-5 pb-20 pt-6 animate-in fade-in duration-200 lg:max-w-[860px] lg:px-0 lg:pt-8">
       {/* Location */}
-      <section className="mb-7 rounded-2xl border border-zinc-850 bg-[#141416] p-4">
-        <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+      <section className="mb-7 rounded-2xl border border-line bg-card p-4">
+        <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
           Локация
         </p>
-        <p className="flex items-center gap-2 text-[15px] font-medium text-zinc-100">
-          <MapPin size={17} className="text-zinc-400" />
+        <p className="flex items-center gap-2 text-[15px] font-medium text-foreground">
+          <MapPin size={17} className="text-muted" />
           <span>{profile.location}</span>
         </p>
       </section>
 
       {/* About */}
-      <section className="mb-7 rounded-2xl border border-zinc-850 bg-[#141416] p-4">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+      <section className="mb-7 rounded-2xl border border-line bg-card p-4">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
           О себе
         </p>
-        <p className="whitespace-pre-line text-[14px] leading-relaxed text-zinc-200">
+        <p className="whitespace-pre-line text-[14px] leading-relaxed text-foreground/85">
           {aboutText}
         </p>
         <button
@@ -45,9 +63,13 @@ export function InfoPanel({ profile }: { profile: Profile }) {
         </button>
       </section>
 
+      <SkillSection title="Мои сильные качества" items={profile.strengths} />
+      <SkillSection title="Профессиональные навыки" items={profile.professionalSkills} />
+      <SkillSection title="Личные навыки" items={profile.personalSkills} />
+
       {/* Contact / Links */}
-      <section className="mb-7 rounded-2xl border border-zinc-850 bg-[#141416] p-4">
-        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+      <section className="mb-7 rounded-2xl border border-line bg-card p-4">
+        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
           Связь / Telegram
         </p>
         <div className="space-y-2.5">
@@ -55,27 +77,27 @@ export function InfoPanel({ profile }: { profile: Profile }) {
             href={telegramHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-3.5 text-[14px] font-medium text-zinc-100 hover:border-[#229ED9]/70 hover:bg-[#229ED9]/15 transition"
+            className="group flex items-center justify-between rounded-xl border border-line bg-surface px-4 py-3.5 text-[14px] font-medium text-foreground hover:border-[#229ED9]/70 hover:bg-[#229ED9]/15 transition"
           >
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#229ED9]/20 text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition">
                 <Send size={16} />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[15px] font-semibold text-white tracking-wide">
+                <span className="text-[15px] font-semibold text-foreground tracking-wide">
                   {telegramDisplay}
                 </span>
-                <span className="text-[11px] text-zinc-400">
+                <span className="text-[11px] text-muted">
                   Написать в Telegram
                 </span>
               </div>
             </div>
-            <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition" />
+            <ExternalLink size={16} className="text-muted group-hover:text-foreground transition" />
           </a>
 
           <div className="pt-0.5">
             <ShareButton
-              className="w-full justify-center !rounded-xl !py-3 !bg-zinc-900/80 !border-zinc-800 hover:!border-zinc-700 text-[14px]"
+              className="w-full justify-center !rounded-xl !border-line !bg-surface !py-3 text-[14px] hover:!bg-surface-strong"
               title={profile.shareTitle}
               text={profile.shareText}
             />
@@ -83,26 +105,8 @@ export function InfoPanel({ profile }: { profile: Profile }) {
         </div>
       </section>
 
-      {/* Focus */}
-      <section className="mb-8 rounded-2xl border border-zinc-850 bg-[#141416] p-4">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
-          Специализация & Фокус
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {profile.focus.map((item) => (
-            <span
-              key={item}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-800 bg-zinc-900/90 px-3 py-1.5 text-[13px] font-medium text-zinc-200"
-            >
-              <CheckCircle2 size={13} className="text-emerald-400" />
-              <span>{item}</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
       {/* Member since footer */}
-      <div className="flex items-center justify-center gap-2 text-center text-[12px] font-medium tracking-wide text-zinc-400">
+      <div className="flex items-center justify-center gap-2 text-center text-[12px] font-medium tracking-wide text-muted">
         <Calendar size={13} />
         <span>В дизайне с {profile.memberSince}</span>
       </div>

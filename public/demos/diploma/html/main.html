@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Питомцы онлайн</title>
+    <title>Flutt - груминг и забота о питомцах</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 
@@ -13,7 +14,7 @@
         <div class="container">
             <header class="header">
                 <div class="header-top">
-                    <a href="../html/main.html ">
+                    <a href="../html/main.html">
                         <div class="logo">
                             <img src="../assets/svg/logo1.svg" alt="Flutt Груминг">
                         </div>
@@ -49,6 +50,13 @@
                             <a href="../html/service.html" class="btn btn-primary">Просмотреть все услуги</a>
                         </div>
                     </div>
+                    <button type="button" class="process-hotspot process-hotspot--research" aria-expanded="false">
+                        <span class="process-hotspot__pin">01</span>
+                        <span class="process-hotspot__bubble">
+                            <strong>Исследование аудитории</strong>
+                            <span>Изучила потребности владельцев питомцев: быстро сравнить услуги и цены, убедиться в профессионализме специалистов и записаться без звонка.</span>
+                        </span>
+                    </button>
                 </div>
 
                 <div class="header-bottom">
@@ -83,7 +91,7 @@
                 <div class="badge-history">
                     <img src="../assets/svg/history.svg" alt="Иконка косточки" class="badge-icon">
                 </div>
-                <h1>Мы полностью ответственны благополучию вашего питомца.</h1>
+                <h1>Мы полностью отвечаем за благополучие вашего питомца.</h1>
                 <p class="block2-description">
                     Вот уже более 10 лет мы посвящаем себя тому, чтобы наши питомцы выглядели великолепно и чувствовали себя любимыми.
                 </p>
@@ -137,7 +145,7 @@
         </div>
     </div>
 
- <div class="block3">
+ <div class="block3" id="services">
     <div class="block3-container container">
         <div class="block3-header">
             <div class="block3-titles">
@@ -148,6 +156,14 @@
             </div>
             <a href="../html/blog.html" class="block3-btn-all">Просмотреть все услуги</a>
         </div>
+
+        <button type="button" class="process-hotspot process-hotspot--wireframes" aria-expanded="false">
+            <span class="process-hotspot__pin">02</span>
+            <span class="process-hotspot__bubble">
+                <strong>Wireframes</strong>
+                <span>Сначала собрала low-fi структуру: ценностное предложение, услуги, преимущества, специалисты, цены, FAQ и форма записи. Проверила иерархию и порядок блоков на мобильных.</span>
+            </span>
+        </button>
 
         <div class="block3-cards">
             <div class="b3-cards-track">
@@ -199,8 +215,8 @@
                         </a>
                     </div>
                     <div class="b3-card-info">
-                        <h3>Укладка волос (Клон)</h3>
-                        <p>Повторяющаяся услуга для проверки работы нашей карусели.</p>
+                        <h3>Экспресс-линяние</h3>
+                        <p>Комплексный уход для удаления лишней шерсти, бережного очищения кожи и легкого расчесывания.</p>
                     </div>
                 </div>
 
@@ -212,8 +228,8 @@
                         </a>
                     </div>
                     <div class="b3-card-info">
-                        <h3>Присмотр за собаками (Клон)</h3>
-                        <p>Еще одна карточка, чтобы забить пространство слайдера.</p>
+                        <h3>Уход за лапами</h3>
+                        <p>Аккуратная обработка подушечек лап, стрижка когтей и уход за шерстью между пальцами.</p>
                     </div>
                 </div>
 
@@ -225,8 +241,8 @@
                         </a>
                     </div>
                     <div class="b3-card-info">
-                        <h3>Чистка зубов (Клон)</h3>
-                        <p>Заключительная шестая карточка для идеального теста пагинации.</p>
+                        <h3>Уход за ушами</h3>
+                        <p>Деликатная гигиеническая чистка ушей с учетом породы, возраста и чувствительности питомца.</p>
                     </div>
                 </div>
 
@@ -250,13 +266,21 @@
     </div>
 </div>
     <!-- Твой БЛОК 4 (Теперь его фон растягивается на 100% экрана, а края не белые!) -->
-    <div class="ChoseBlock4">
+    <div class="ChoseBlock4" id="advantages">
     <!-- Этот контейнер держит по центру только текст, карточки и видео -->
     <div class="block4-container container">
         <div class="block4-header">
             <h2>Почему выбирают нас?</h2>
             <p class="block4-subtitle">Легко находите и бронируйте услуги проверенных специалистов по уходу за животными рядом с вами.</p>
         </div>
+
+        <button type="button" class="process-hotspot process-hotspot--flow" aria-expanded="false">
+            <span class="process-hotspot__pin">03</span>
+            <span class="process-hotspot__bubble">
+                <strong>User flow</strong>
+                <span>Основной маршрут ведет от знакомства с салоном к выбору услуги, проверке преимуществ и специалиста, а затем к форме записи. CTA повторяются в ключевых точках принятия решения.</span>
+            </span>
+        </button>
 
         <div class="block4-interactive-space">
             <img src="../assets/icons/dog4.png" alt="собакаПоказываетЛапу" class="img-dog">
@@ -293,7 +317,7 @@
     <div class="block4-video-wrapper" id="videoContainer">
     <img src="../assets/icons/video.png" alt="ВидеоСамоФото" class="img-video-cover" id="videoCover">
     
-<video src="../assets/icons/какподстричьшпица.mp4" class="img-video-cover" id="mainVideo" controls style="display: none;"></video></div>
+<video src="../assets/icons/какподстричьшпица.mp4" class="img-video-cover" id="mainVideo" controls preload="metadata" playsinline style="display: none;"></video></div>
     </div> <!-- Переместили закрывающий тег контейнера СЮДА -->
 
     <!-- Теперь лента находится ВНЕ контейнера и может свободно растягиваться на 100% ширины экрана -->
@@ -498,13 +522,21 @@
 </div>
     </div>
 </section>
-    <section class="team-section">
+    <section class="team-section" id="team">
         <div class="container">
                     <div class="history-badge">
             <img src="../assets/svg/history.svg" alt="Иконка">
         </div>
             <h2 class="underline-title">Преданный, увлеченный и<br>целеустремленный</h2>
             <p class="section-subtitle">Наша команда состоит из преданных своему делу людей, объединенных общей любовью к животным.</p>
+
+            <button type="button" class="process-hotspot process-hotspot--ui-kit" aria-expanded="false">
+                <span class="process-hotspot__pin">04</span>
+                <span class="process-hotspot__bubble">
+                    <strong>UI-kit и компоненты</strong>
+                    <span>Собрала единую систему цветов, типографики, кнопок, карточек, полей и состояний. Повторяемые компоненты сохраняют теплый визуальный язык Flutt на всех страницах.</span>
+                </span>
+            </button>
 
             <div class="team-wrapper">
                 <div class="team-list">
@@ -545,15 +577,15 @@
                     <div class="main-card-content">
                         <h3>Алина Маистер</h3>
                         <span class="member-role">Няня для животных</span>
-                        <p>«Я много лет работаю няней для животных <br>и каждое мгновение рядом с питомцами дарит<br>мне радость. Знаю, как найти подход к любой <br>собаке иликошке: успокоить тревожного,<br> 
-развеселить грустного, дать заботу тому, кто <br>скучает.Предоставляю полный уход: выгул с <br>
-играми, кормление по расписанию, гигиенические <br>процедуры и внимательное наблюдение <br>за самочувствием. Ваш питомец будет <br>окружёнтеплом и заботой — как в кругу семьи!»</p>
+                        <p>«Я много лет работаю няней для животных <br>и каждое мгновение рядом с питомцами дарит<br>мне радость. Знаю, как найти подход к любой <br>собаке или кошке: успокоить тревожного,<br> 
+развеселить грустного, дать заботу тому, кто <br>скучает. Предоставляю полный уход: выгул с <br>
+играми, кормление по расписанию, гигиенические <br>процедуры и внимательное наблюдение <br>за самочувствием. Ваш питомец будет <br>окружён теплом и заботой — как в кругу семьи!»</p>
                       <button class="btn-primary register-check-btn">Зарегистрироваться</button>
                         <div class="social-links">
-                            <a href="#"><img src="../assets/svg/Symbol1.svg" alt=""></a>
-                            <a href="#"><img src="../assets/svg/twitter.svg" alt=""></a>
-                            <a href="#"><img src="../assets/svg/youtube3.svg" alt=""></a>
-                            <a href="#"><img src="../assets/svg/linkidin4.svg" alt=""></a>
+                            <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/Symbol1.svg" alt=""></a>
+                            <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/twitter.svg" alt=""></a>
+                            <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/youtube3.svg" alt=""></a>
+                            <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/linkidin4.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -676,16 +708,24 @@
         </div>
     </div>
 </section>
-<section class="booking-section">
+<section class="booking-section" id="booking">
     <div class="container-booking">
         
         <div class="booking-header">
             <div class="logo-mini">
-                <img src="/assets/svg/history.svg" alt="Лого">
+                <img src="../assets/svg/history.svg" alt="Лого">
             </div>
             <h2>Записаться на прием</h2>
             <p class="form-desc">Нужна консультация или есть вопросы о наших услугах? Свяжитесь с нами любым удобным для вас способом.</p>
         </div>
+
+        <button type="button" class="process-hotspot process-hotspot--final" aria-expanded="false">
+            <span class="process-hotspot__pin">05</span>
+            <span class="process-hotspot__bubble">
+                <strong>Финальные экраны</strong>
+                <span>Подготовила адаптивные макеты для компьютера, планшета и телефона. Навигация, выбор услуги, видео и форма записи реализованы в рабочем HTML/CSS/JavaScript-прототипе.</span>
+            </span>
+        </button>
 
         <div class="booking-card">
             
@@ -726,6 +766,7 @@
                                 <option value="" disabled selected>Выберите услугу*</option>
                                 <option value="1">Груминг</option>
                                 <option value="2">Спа-комплекс</option>
+                                <option value="3">Вакцинация</option>
                             </select>
                         </div>
                     </div>
@@ -769,7 +810,7 @@
                 </div>
                 <h3>Как Ухаживать За Питомцами Круглый Год</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -789,7 +830,7 @@
                 </div>
                 <h3>Советы Для Здоровой Жизни Вашего Питомца</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать<img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать<img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -809,7 +850,7 @@
                 </div>
                 <h3>Понимание Поведения Кошек Для Общения</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -823,8 +864,8 @@
            
                 <h2>Ознакомьтесь с нашим комплексным решением по уходу за домашними животными.</h2>
                 <div class="cta-buttons">
-                    <a href="#form"><button class="cta-orange">Записаться на прием <img src="../assets/svg/arrow1.svg" alt="arrow"></button></a>
-                    <a href="../html/team.html"><button class="cta-black">Наши специалисты <img src="../assets/svg/arrow1.svg" alt="arrow"></button></a>
+                    <a href="../html/service.html#form" class="cta-orange">Записаться на прием <img src="../assets/svg/arrow1.svg" alt="arrow"></a>
+                    <a href="../html/team.html" class="cta-black">Наши специалисты <img src="../assets/svg/arrow1.svg" alt="arrow"></a>
                 </div>
           
        
@@ -846,51 +887,51 @@
                             <li><a href="../html/main.html">+ Главная</a></li>
                             <li><a href="../html/about.html">+ О нас</a></li>
                             <li><a href="../html/service.html">+ Сервис</a></li>
-                            <li><a href="/..html/team.html">+ Наши грумеры</a></li>
-                            <li><a href="/">+ Записаться на прием</a></li>
+                            <li><a href="../html/team.html">+ Наши грумеры</a></li>
+                            <li><a href="../html/about.html#auth-section">+ Записаться на прием</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-links">
                         <h3>Ресурсы</h3>
                         <ul>
-                            <li><a href="#">+ Статьи и советы</a></li>
-                            <li><a href="#">+ Профилактическая</a></li>
-                            <li><a href="#">+ Наш блог</a></li>
-                            <li><a href="#">+ Условия и положения</a></li>
+                            <li><a href="../html/blog.html">+ Статьи и советы</a></li>
+                            <li><a href="../html/blog.html#faq">+ Профилактика и FAQ</a></li>
+                            <li><a href="../html/blog.html">+ Наш блог</a></li>
+                            <li><a aria-disabled="true" tabindex="-1" title="Раздел готовится">+ Условия и положения</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-links">
                         <h3>Услуги</h3>
                         <ul>
-                            <li><a href="#">+ Груминг</a></li>
-                            <li><a href="#">+ Ванна и щетка</a></li>
-                            <li><a href="#">+ Стрижка шерсти</a></li>
-                            <li><a href="#">+ Стрижка ногтей</a></li>
-                            <li><a href="#">+ Чистка ушей</a></li>
+                            <li><a href="../html/service.html">+ Груминг</a></li>
+                            <li><a href="../html/service.html">+ Ванна и щетка</a></li>
+                            <li><a href="../html/service.html">+ Стрижка шерсти</a></li>
+                            <li><a href="../html/service.html">+ Стрижка ногтей</a></li>
+                            <li><a href="../html/service.html">+ Чистка ушей</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-links">
                         <h3>Поддержка</h3>
                         <ul>
-                            <li><a href="#">+ Центр поддержки</a></li>
-                            <li><a href="#">+ Faq</a></li>
-                            <li><a href="#">+ Связаться с нами</a></li>
-                            <li><a href="#">+ Служба поддержки по заявкам</a></li>
+                            <li><a href="#contacts">+ Центр поддержки</a></li>
+                            <li><a href="../html/blog.html#faq">+ FAQ</a></li>
+                            <li><a href="#contacts">+ Связаться с нами</a></li>
+                            <li><a href="mailto:flutt@gmail.com">+ Поддержка по заявкам</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; Авторское право 2018 <span class="orange-text">Flutt</span>. Все права защищены</p>
+                    <p>&copy; Авторское право 2026 <span class="orange-text">Flutt</span>. Все права защищены</p>
                     <div class="footer-socials">
                         <span>Социальные медиа:</span>
-                        <a href="#"><img src="../assets/svg/face.svg" alt=""></a>
-                        <a href="#"><img src="../assets/svg/twit.svg" alt=""></a>
-                        <a href="#"><img src="../assets/svg/yout.svg" alt=""></a>
-                        <a href="#"><img src="../assets/svg/link.svg" alt=""></a>
+                        <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/face.svg" alt=""></a>
+                        <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/twit.svg" alt=""></a>
+                        <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/yout.svg" alt=""></a>
+                        <a aria-disabled="true" tabindex="-1" title="Раздел готовится"><img src="../assets/svg/link.svg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -901,5 +942,6 @@
     <script src="../JS/pagination.js"></script>
     <script src="../JS/changeCard.js"></script>
     <script src="../JS/video.js"></script>
+<script src="../JS/site.js?v=5"></script>
 </body>
 </html>

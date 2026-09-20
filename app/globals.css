@@ -1,11 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #f5f5f5;
-  --muted: #9a9a9a;
-  --card: #1c1c1e;
-  --line: #2c2c2e;
+  color-scheme: light;
+  --background: #f5f5f7;
+  --foreground: #17171a;
+  --muted: #6f6f78;
+  --card: #ffffff;
+  --surface: #eeeef1;
+  --surface-strong: #e2e2e7;
+  --line: #d9d9df;
+  --banner: #e9e9ed;
+  --pattern: rgba(23, 23, 26, 0.2);
+  --selection-background: #17171a;
+  --selection-foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: #000000;
+    --foreground: #f5f5f5;
+    --muted: #9a9a9a;
+    --card: #141416;
+    --surface: #1c1c1f;
+    --surface-strong: #29292d;
+    --line: #2c2c30;
+    --banner: #101012;
+    --pattern: rgba(255, 255, 255, 0.22);
+    --selection-background: #ffffff;
+    --selection-foreground: #000000;
+  }
 }
 
 @theme inline {
@@ -13,7 +37,10 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
   --color-line: var(--line);
+  --color-banner: var(--banner);
   --font-sans: var(--font-inter);
 }
 
@@ -26,9 +53,10 @@ body {
 
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 ::selection {
-  background: #ffffff;
-  color: #000000;
+  background: var(--selection-background);
+  color: var(--selection-foreground);
 }

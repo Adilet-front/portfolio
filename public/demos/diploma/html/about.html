@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>О салоне Flutt</title>
     <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
         <div class="header-section">
         <div class="container">
             <header class="header">
                 <div class="header-top">
-                    <a href="../html/main.html ">
+                    <a href="../html/main.html">
                         <div class="logo">
                             <img src="../assets/svg/logo1.svg" alt="Flutt Груминг">
                         </div>
@@ -45,8 +46,8 @@
                       <li>органическое питание: фермерские продукты, без консервантов и химии;</li>
                       </ul>
                         <div class="header-actions">
-                            <a href="#" class="btn btn-primary">Узнать больше</a>
-                            <a href="#" class="btn btn-secondary">Первый день бесплатно!</a>
+                            <a href="../html/service.html" class="btn btn-primary">Узнать больше</a>
+                            <a href="#auth-section" class="btn btn-secondary">Первый день бесплатно!</a>
                         </div>
                     </div>
                 </div>
@@ -87,7 +88,7 @@
                         </div>
                         <p>развитие координации и ловкости</p>
                         </div>
-                        <a href="../html/about.html#auth-section"><button>Забронируйте сейчас</button></a>
+                        <a href="#auth-section">Забронируйте сейчас</a>
                         
                     </div>
                 </div>
@@ -116,7 +117,7 @@
                         </div>
                         <p>сохранять здоровье шерсти и кожи</p>
                         </div>
-                        <a href="../html/about.html#auth-section"><button>Забронируйте сейчас</button></a>
+                        <a href="#auth-section">Забронируйте сейчас</a>
                     </div>
                 </div>
                   <div class="card">
@@ -144,7 +145,7 @@
                         </div>
                         <p>избежать проблем с агрессией</p>
                         </div>
-                        <a href="../html/about.html#auth-section"><button>Забронируйте сейчас</button></a>
+                        <a href="#auth-section">Забронируйте сейчас</a>
                     </div>
                 </div>
                   <div class="card">
@@ -172,7 +173,7 @@
                         </div>
                         <p>развивает эмпатию</p>
                         </div>
-                        <a href="../html/about.html#auth-section"><button>Забронируйте сейчас</button></a>
+                        <a href="#auth-section">Забронируйте сейчас</a>
                     </div>
                 </div>
             </div>
@@ -228,7 +229,7 @@
             <h4 class="stat-title">Прогресс в уходе за домашними животными</h4>
             <div class="stat-body">
               <span class="percentage">85%</span>
-              <a href="#" class="stat-btn">Просмотреть график</a>
+              <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="stat-btn">Просмотреть график</a>
             </div>
           </div>
 
@@ -236,7 +237,7 @@
             <h4 class="stat-title">Прогресс в уходе за домашними животными</h4>
             <div class="stat-body">
               <span class="percentage">95%</span>
-              <a href="#" class="stat-btn">Просмотреть график</a>
+              <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="stat-btn">Просмотреть график</a>
             </div>
           </div>
         </div>
@@ -329,10 +330,7 @@
                 <span class="badge">План обслуживания</span>
                 <h2 class="main-title">Наш тарифный план</h2>
             </div>
-            <div class="period-toggle">
-                <button class="toggle-btn active">Месяц</button>
-                <button class="toggle-btn">Год</button>
-            </div>
+            <p class="pricing-note">Цены указаны за один визит</p>
         </div>
 
         <div class="pricing-grid">
@@ -340,19 +338,19 @@
             <input type="radio" name="plan-select" id="plan-1" class="plan-radio" checked>
             <label for="plan-1" class="price-card">
                 <div class="card-body">
-                    <h3 class="card-title">Стрижка собак</h3>
-                    <p class="card-description">Наш AI зависит от вашего руководства. Задавайте любые вопросы в любое время.</p>
+                    <h3 class="card-title">Базовый уход</h3>
+                    <p class="card-description">Бережный комплекс для регулярной гигиены и свежести питомца.</p>
                     <div class="card-action">
-                        <button class="select-plan-btn">Выберите план</button>
-                        <div class="price"><strong>$1000</strong><span>/мес</span></div>
+                        <a href="#auth-section" class="select-plan-btn">Выберите план</a>
+                        <div class="price"><strong>$35</strong><span>/визит</span></div>
                     </div>
                     <hr class="divider">
                     <ul class="features-list">
-                        <li class="included">Быстрые, подробные ответы</li>
-                        <li class="included">Создано до мельчайших деталей</li>
-                        <li class="included">Надежно. Подкреплено источниками.</li>
-                        <li class="disabled">Анализ многочасовых разговоров.</li>
-                        <li class="disabled">Точный. Создан под мельчайшие детали</li>
+                        <li class="included">Купание с профессиональным шампунем</li>
+                        <li class="included">Сушка и расчесывание шерсти</li>
+                        <li class="included">Бережная чистка ушей</li>
+                        <li class="disabled">Модельная стрижка</li>
+                        <li class="disabled">Уход за зубами</li>
                     </ul>
                 </div>
             </label>
@@ -361,19 +359,19 @@
             <label for="plan-2" class="price-card square-top">
                 <div class="featured-badge">Лучшее предложение для вас</div>
                 <div class="card-body">
-                    <h3 class="card-title">Стандартный план</h3>
-                    <p class="card-description">Наш AI зависит от вашего руководства. Задавайте любые вопросы в любое время.</p>
+                    <h3 class="card-title">Комплексный груминг</h3>
+                    <p class="card-description">Полный уход за шерстью, лапами и гигиеной с учетом особенностей породы.</p>
                     <div class="card-action">
-                        <button class="select-plan-btn">Выберите план</button>
-                        <div class="price"><strong>$1800</strong><span>/мес</span></div>
+                        <a href="#auth-section" class="select-plan-btn">Выберите план</a>
+                        <div class="price"><strong>$55</strong><span>/визит</span></div>
                     </div>
                     <hr class="divider">
                     <ul class="features-list">
-                        <li class="included">Быстрые, подробные ответы</li>
-                        <li class="included">Создано до мельчайших деталей</li>
-                        <li class="included">Надежно. Подкреплено источниками.</li>
-                        <li class="included">Анализ многочасовых разговоров.</li>
-                        <li class="disabled">Точный. Создан под мельчайшие детали</li>
+                        <li class="included">Купание и кондиционирование</li>
+                        <li class="included">Стрижка и укладка шерсти</li>
+                        <li class="included">Уход за ушами и глазами</li>
+                        <li class="included">Стрижка и обработка когтей</li>
+                        <li class="disabled">Уход за зубами</li>
                     </ul>
                 </div>
             </label>
@@ -381,19 +379,19 @@
             <input type="radio" name="plan-select" id="plan-3" class="plan-radio">
             <label for="plan-3" class="price-card">
                 <div class="card-body">
-                    <h3 class="card-title">Стандартный план</h3>
-                    <p class="card-description">Наш AI зависит от вашего руководства. Задавайте любые вопросы в любое время.</p>
+                    <h3 class="card-title">Спа-уход</h3>
+                    <p class="card-description">Расширенный комплекс для красоты шерсти, спокойствия и комфорта питомца.</p>
                     <div class="card-action">
-                        <button class="select-plan-btn">Выберите план</button>
-                        <div class="price"><strong>$2500</strong><span>/мес</span></div>
+                        <a href="#auth-section" class="select-plan-btn">Выберите план</a>
+                        <div class="price"><strong>$65</strong><span>/визит</span></div>
                     </div>
                     <hr class="divider">
                     <ul class="features-list">
-                        <li class="included">Быстрые, подробные ответы</li>
-                        <li class="included">Создано до мельчайших деталей</li>
-                        <li class="included">Надежно. Подкреплено источниками.</li>
-                        <li class="included">Анализ многочасовых разговоров.</li>
-                        <li class="included">Точный. Создан под мельчайшие детали</li>
+                        <li class="included">Все услуги комплексного груминга</li>
+                        <li class="included">Массаж и питательная маска</li>
+                        <li class="included">Уход за зубами</li>
+                        <li class="included">Спа-обработка лап</li>
+                        <li class="included">Персональные рекомендации грумера</li>
                     </ul>
                 </div>
             </label>
@@ -488,7 +486,7 @@
                 </div>
                 <h3>Как Ухаживать За Питомцами Круглый Год</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -508,7 +506,7 @@
                 </div>
                 <h3>Советы Для Здоровой Жизни Вашего Питомца</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать<img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать<img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -528,7 +526,7 @@
                 </div>
                 <h3>Понимание Поведения Кошек Для Общения</h3>
                 <div class="blog-footer">
-                    <a href="#" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
+                    <a href="../html/blog.html" class="btn-read-more">Читать <img src="../assets/svg/arrow2.svg" alt="arrow2"></a>
                 </div>
             </article>
 
@@ -553,11 +551,11 @@
                 После регистрации ваша собака присоединяется к группе подходящих друзей для игр под присмотром взрослых. Мы организуем различные мероприятия...
             </p>
             <div class="social-links">
-                <a href="#" class="social-item"><img src="../assets/svg/faceWhhite.svg" alt="Facebook"></a>
-                <a href="#" class="social-item"><img src="../assets/svg/Symbol-1.svg" alt="Web"></a>
-                <a href="#" class="social-item"><img src="../assets/svg/Symbol-2.svg" alt="Instagram"></a>
-                <a href="#" class="social-item"><img src="../assets/svg/Symbol-3.svg" alt="YouTube"></a>
-                <a href="#" class="social-item"><img src="../assets/svg/Symbol-4.svg" alt="LinkedIn"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="social-item"><img src="../assets/svg/faceWhhite.svg" alt="Facebook"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="social-item"><img src="../assets/svg/Symbol-1.svg" alt="Web"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="social-item"><img src="../assets/svg/Symbol-2.svg" alt="Instagram"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="social-item"><img src="../assets/svg/Symbol-3.svg" alt="YouTube"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="social-item"><img src="../assets/svg/Symbol-4.svg" alt="LinkedIn"></a>
             </div>
         </div>
 
@@ -603,19 +601,20 @@
 
             <h4 class="apps-title">Скачать приложение</h4>
             <div class="app-buttons">
-                <a href="#" class="app-btn"><img src="../assets/svg/googleplay.svg" alt="Google Play"></a>
-                <a href="#" class="app-btn"><img src="../assets/svg/appstore.svg" alt="App Store"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="app-btn"><img src="../assets/svg/googleplay.svg" alt="Google Play"></a>
+                <a aria-disabled="true" tabindex="-1" title="Раздел готовится" class="app-btn"><img src="../assets/svg/appstore.svg" alt="App Store"></a>
             </div>
         </div>
     </div>
 
     <div class="footer-bottom">
         <div class="copyright-box">
-             <p>&copy; Авторское право 2018 <span class="orange-text">Flutt</span>. Все права защищены</p>
+             <p>&copy; Авторское право 2026 <span class="orange-text">Flutt</span>. Все права защищены</p>
         </div>
     </div>
 </footer>
 
 <script src="../JS/auth.js"></script>
+<script src="../JS/site.js?v=5"></script>
 </body>
 </html>
