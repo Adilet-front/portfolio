@@ -323,6 +323,22 @@ a[aria-disabled="true"] {
 }
 
 @media (max-width: 768px) {
+    .block2,
+    .block3,
+    .ChoseBlock4,
+    .helpDogBlock5,
+    .gallery-section,
+    .testimonials-section,
+    .team-section,
+    .services-section,
+    .faq-section,
+    .booking-section,
+    .blog-section,
+    .site-footer {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 900px;
+    }
+
     body {
         background: #fcfbfa;
     }

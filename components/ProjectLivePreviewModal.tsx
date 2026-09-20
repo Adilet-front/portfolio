@@ -14,6 +14,7 @@ export function ProjectLivePreviewModal({
   onClose,
 }: ProjectLivePreviewModalProps) {
   const [iframeKey, setIframeKey] = useState(0);
+  const [isIframeLoading, setIsIframeLoading] = useState(true);
 
   useEffect(() => {
     if (!project) return;
@@ -37,12 +38,13 @@ export function ProjectLivePreviewModal({
   if (!project) return null;
 
   const reloadIframe = () => {
+    setIsIframeLoading(true);
     setIframeKey((prev) => prev + 1);
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col bg-background/95 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex h-dvh w-screen flex-col bg-background/95 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="live-preview-title"
@@ -103,12 +105,21 @@ export function ProjectLivePreviewModal({
       </header>
 
       {/* Frame Container */}
-      <main className="flex min-h-0 flex-1 overflow-hidden bg-white">
-        <div className="h-full w-full overflow-hidden bg-white">
+      <main className="relative flex min-h-0 flex-1 overflow-hidden bg-white">
+        <div className="relative h-full w-full overflow-hidden bg-white">
+          {isIframeLoading && (
+            <div className="absolute inset-0 z-10 grid place-items-center bg-white text-black">
+              <div className="flex flex-col items-center gap-3 text-center">
+                <span className="h-7 w-7 animate-spin rounded-full border-2 border-black/15 border-t-[#f27a32]" />
+                <span className="text-[13px] font-semibold">Загружаем первый экран…</span>
+              </div>
+            </div>
+          )}
           <iframe
             key={iframeKey}
             src={project.liveUrl}
             title={project.title}
+            onLoad={() => setIsIframeLoading(false)}
             className="h-full w-full border-0 bg-white"
           />
         </div>

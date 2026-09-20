@@ -28,6 +28,7 @@ type WorkCaseClientProps = {
 
 export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isEmbeddedLoaded, setIsEmbeddedLoaded] = useState(false);
   const isInternalDemo = project.liveUrl.startsWith("/demos/");
   const isBehance = project.liveUrl.includes("behance.net");
 
@@ -220,12 +221,43 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                     Live
                   </span>
                 </div>
-                <iframe
-                  src={project.liveUrl}
-                  title={project.title}
-                  loading="lazy"
-                  className="block h-[70svh] min-h-[480px] w-full border-0 bg-white sm:h-[72svh] sm:min-h-[600px] lg:h-[720px]"
-                />
+                {isEmbeddedLoaded ? (
+                  <iframe
+                    src={project.liveUrl}
+                    title={project.title}
+                    loading="lazy"
+                    className="block h-[70svh] min-h-[480px] w-full border-0 bg-white sm:h-[72svh] sm:min-h-[600px] lg:h-[720px]"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setIsEmbeddedLoaded(true)}
+                    className="group relative block h-[70svh] min-h-[480px] w-full overflow-hidden bg-black text-left sm:h-[72svh] sm:min-h-[600px] lg:h-[720px]"
+                    aria-label="Загрузить интерактивный проект Flutt"
+                  >
+                    <Image
+                      src={project.gallery[0]}
+                      alt="Превью интерактивного проекта Flutt"
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 1152px"
+                      className="object-cover object-top opacity-75 transition duration-500 group-hover:scale-[1.01] group-hover:opacity-65"
+                    />
+                    <span className="absolute inset-0 bg-black/35" />
+                    <span className="absolute inset-0 flex items-center justify-center p-6">
+                      <span className="flex max-w-sm flex-col items-center text-center text-white">
+                        <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-black shadow-2xl transition group-hover:scale-105">
+                          <Play size={20} fill="currentColor" />
+                        </span>
+                        <strong className="mt-4 text-[17px] font-semibold">
+                          Загрузить интерактивный проект
+                        </strong>
+                        <span className="mt-2 text-[12px] leading-5 text-white/75">
+                          Видео и остальные материалы загрузятся только после запуска
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                )}
               </div>
             </section>
           )}
