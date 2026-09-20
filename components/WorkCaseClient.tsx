@@ -233,11 +233,11 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                     type="button"
                     onClick={() => setIsEmbeddedLoaded(true)}
                     className="group relative block h-[70svh] min-h-[480px] w-full overflow-hidden bg-black text-left sm:h-[72svh] sm:min-h-[600px] lg:h-[720px]"
-                    aria-label="Загрузить интерактивный проект Flutt"
+                    aria-label={`Загрузить интерактивный проект ${project.shortTitle}`}
                   >
                     <Image
-                      src={project.gallery[0]}
-                      alt="Превью интерактивного проекта Flutt"
+                      src={project.gallery[0] || project.cover}
+                      alt={`Превью интерактивного проекта ${project.shortTitle}`}
                       fill
                       sizes="(max-width: 1200px) 100vw, 1152px"
                       className="object-cover object-top opacity-75 transition duration-500 group-hover:scale-[1.01] group-hover:opacity-65"
@@ -252,7 +252,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                           Загрузить интерактивный проект
                         </strong>
                         <span className="mt-2 text-[12px] leading-5 text-white/75">
-                          Видео и остальные материалы загрузятся только после запуска
+                          Интерактивные материалы загрузятся после запуска
                         </span>
                       </span>
                     </span>
@@ -296,7 +296,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
           </section>
 
           {/* Gallery / Visuals */}
-          <section className="mt-10 space-y-5">
+          {project.gallery.length > 0 && <section className="mt-10 space-y-5">
             <h2 className="text-[18px] font-bold text-foreground">
               Визуальная часть кейса
             </h2>
@@ -317,7 +317,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                 </div>
               ))}
             </div>
-          </section>
+          </section>}
 
           <section className="mt-12">
             <div className="flex items-center gap-2 text-foreground">

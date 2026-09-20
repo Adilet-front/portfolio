@@ -33,7 +33,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
         <div className="absolute left-4 top-4 flex items-center gap-2 text-[10px] font-semibold uppercase text-white/85 opacity-80 transition-opacity duration-300 group-hover:opacity-100 sm:left-5 sm:top-5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#f27a32] shadow-[0_0_12px_rgba(242,122,50,0.85)]" />
-          Дипломный проект
+          {project.slug === "diploma-grooming" ? "Дипломный проект" : "Интерактивный концепт"}
         </div>
 
         <div className="absolute right-4 top-4 flex items-center gap-2 text-white sm:right-5 sm:top-5">
