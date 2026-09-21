@@ -260,7 +260,7 @@ export const profile: Profile = {
       issuer: "ОсОО «ТикТек»",
       issuedAt: "4 августа 2026 года",
       credentialId: "KS260027832",
-      image: "/certificates/ux-ui-certificate.jpg",
+      image: "/certificates/ux-ui-certificate-portrait.jpg",
       imageWidth: 1831,
       imageHeight: 2525
     }
