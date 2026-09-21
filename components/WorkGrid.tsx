@@ -26,11 +26,12 @@ export function WorkGrid({ projects }: WorkGridProps) {
             : "grid-cols-1 sm:grid-cols-2"
         }`}
       >
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <ProjectCard
             key={project.slug}
             project={project}
             onSelect={setSelectedProject}
+            eager={index === 0}
           />
         ))}
       </div>

@@ -8,9 +8,10 @@ import type { Project } from "@/content/profile";
 type ProjectCardProps = {
   project: Project;
   onSelect: (project: Project) => void;
+  eager?: boolean;
 };
 
-export function ProjectCard({ project, onSelect }: ProjectCardProps) {
+export function ProjectCard({ project, onSelect, eager = false }: ProjectCardProps) {
   return (
     <button
       type="button"
@@ -20,12 +21,12 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-strong">
         <Image
-          src={project.cover}
-          alt={project.title}
+          src={project.cover.src}
+          alt={project.cover.alt}
           fill
           sizes="(max-width: 640px) calc(100vw - 24px), (max-width: 1023px) 508px, 840px"
           className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-          priority
+          loading={eager ? "eager" : "lazy"}
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/25 to-transparent opacity-100 transition-opacity duration-500 sm:opacity-20 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100" />

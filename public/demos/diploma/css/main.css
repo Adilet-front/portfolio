@@ -32,7 +32,7 @@ max-width: 100%; /* Теперь сайт тянется на всю ширин�
 
 /* --- ШАПКА --- */
 .header {
-    background-image: url('../assets/icons/headermain.png');
+    background-image: url('../assets/icons/headermain.webp');
     width: 100%;
     /* ИСПРАВЛЕНО: убираем жесткие 959px, делаем гибкую минимальную высоту */
     min-height: 90vh; 
@@ -913,7 +913,7 @@ flex: 1; /* Жестко фиксируем базовый размер колл
 /* Оранжевый контейнер (основа) */
 .block5-container {
     background-color: #F1A533; /* Резервный цвет из макета */
-    background-image: url(../assets/icons/Background4.png);
+    background-image: url(../assets/icons/Background4.webp);
     width: 100%;
     min-height: 625px;
     background-repeat: no-repeat;

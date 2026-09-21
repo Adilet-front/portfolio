@@ -18,6 +18,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { FigmaIcon } from "@/components/FigmaIcon";
+import { CaseStudyImage } from "@/components/CaseStudyImage";
 import type { Project, Profile } from "@/content/profile";
 
 type WorkCaseClientProps = {
@@ -29,6 +30,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
   const [isEmbeddedLoaded, setIsEmbeddedLoaded] = useState(false);
   const isInternalDemo = project.liveUrl.startsWith("/demos/");
   const isBehance = project.liveUrl.includes("behance.net");
+  const previewImage = project.gallery[0] ?? project.cover;
 
   return (
     <>
@@ -234,7 +236,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                     aria-label={`Загрузить интерактивный проект ${project.shortTitle}`}
                   >
                     <Image
-                      src={project.gallery[0] || project.cover}
+                      src={previewImage.src}
                       alt={`Превью интерактивного проекта ${project.shortTitle}`}
                       fill
                       sizes="(max-width: 1200px) 100vw, 1152px"
@@ -300,18 +302,12 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
             </h2>
 
             <div className="space-y-4">
-              {project.gallery.map((src, index) => (
+              {project.gallery.map((image, index) => (
                 <div
-                  key={src + index}
+                  key={image.src}
                   className="relative overflow-hidden rounded-2xl border border-line bg-card shadow-xl"
                 >
-                  <Image
-                    src={src}
-                    alt={`${project.title} экран ${index + 1}`}
-                    width={1200}
-                    height={900}
-                    className="w-full h-auto object-cover"
-                  />
+                  <CaseStudyImage image={image} eager={index === 0} />
                 </div>
               ))}
             </div>

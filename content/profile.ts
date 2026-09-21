@@ -13,14 +13,21 @@ export type Certificate = {
   imageHeight: number;
 };
 
+export type ProjectImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
   shortTitle: string;
   category: string;
   year: string;
-  cover: string;
-  gallery: string[];
+  cover: ProjectImage;
+  gallery: ProjectImage[];
   summary: string;
   figmaUrl: string;
   liveUrl: string;
@@ -77,7 +84,12 @@ export const projects: Project[] = [
     category: "Mobile UX/UI · Interactive Demo",
     year: "2026",
     role: "Дизайн мобильных экранов и развитие интерактивного концепта",
-    cover: "/food-zone/biryani.jpg",
+    cover: {
+      src: "/food-zone/biryani.jpg",
+      width: 720,
+      height: 479,
+      alt: "Плов с лимоном и зеленью в приложении Food Zone",
+    },
     gallery: [],
     summary: "Мобильный концепт доставки еды: от выбора любимого блюда до встречи с курьером. На компьютере приложение открывается в рамке телефона, на смартфоне занимает весь экран.",
     figmaUrl: "https://www.figma.com/design/xxn9Su3GyHrbWA5nPJM3hG/Untitled?node-id=0-1",
@@ -106,13 +118,43 @@ export const projects: Project[] = [
     category: "UX/UI Design · Web Design",
     year: "2026",
     role: "UX/UI-дизайн и проектирование интерфейса",
-    cover: "/projects/flutt-cover.jpg",
+    cover: {
+      src: "/projects/flutt-cover.webp",
+      width: 1672,
+      height: 941,
+      alt: "Главный экран сайта груминг-салона Flutt",
+    },
     gallery: [
-      "/projects/flutt-home.png",
-      "/projects/flutt-services.png",
-      "/projects/flutt-team.png",
-      "/projects/flutt-booking.png",
-      "/projects/flutt-mobile.png"
+      {
+        src: "/projects/flutt-home.webp",
+        width: 1425,
+        height: 990,
+        alt: "Главная страница Flutt",
+      },
+      {
+        src: "/projects/flutt-services.webp",
+        width: 1425,
+        height: 990,
+        alt: "Услуги груминг-салона Flutt",
+      },
+      {
+        src: "/projects/flutt-team.webp",
+        width: 1425,
+        height: 990,
+        alt: "Команда специалистов Flutt",
+      },
+      {
+        src: "/projects/flutt-booking.webp",
+        width: 1425,
+        height: 990,
+        alt: "Форма записи на услугу Flutt",
+      },
+      {
+        src: "/projects/flutt-mobile.webp",
+        width: 375,
+        height: 812,
+        alt: "Мобильная версия сайта Flutt",
+      },
     ],
     summary:
       "Современный сайт груминг-салона, который помогает владельцам домашних животных знакомиться с услугами и ценами, выбирать специалистов и удобно записываться на процедуры.",

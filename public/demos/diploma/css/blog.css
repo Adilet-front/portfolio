@@ -36,7 +36,7 @@ max-width: 100%; /* Теперь сайт тянется на всю ширин�
 /* --- ШАПКА --- */
 .header {
     
-    background-image: url('../assets/icons/backService.png');
+    background-image: url('../assets/icons/backService.webp');
     width: 100%;
     height: 500px; /* Фиксированная высота как просил */
     background-size: cover;
@@ -258,7 +258,7 @@ margin-bottom: 80px;
     overflow: hidden;
     margin-bottom: 16px;
     /* Удали background, когда вставишь реальное фото */
-    background-image: url(../assets/icons/blogdog.png);
+    background-image: url(../assets/icons/blogdog.webp);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 400px;
@@ -788,7 +788,7 @@ margin-bottom: 80px;
 /* Оранжевый контейнер (основа) */
 .block5-container {
     background-color: #F1A533; /* Резервный цвет из макета */
-    background-image: url(../assets/icons/Background4.png);
+    background-image: url(../assets/icons/Background4.webp);
     width: 100%;
     min-height: 625px;
     background-repeat: no-repeat;

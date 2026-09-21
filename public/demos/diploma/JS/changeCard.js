@@ -4,28 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
         0: {
             name: "Алина Маистер",
             role: "Няня для животных",
-            img: "../assets/icons/alina.png",
+            img: "../assets/icons/alina.webp",
             text: "«Я много лет работаю няней для животных и каждое мгновение рядом с питомцами дарит мне радость. Знаю, как найти подход к любой собаке или кошке: успокоить тревожного, развеселить грустного, дать заботу тому, кто скучает...»",
             socials: ["../assets/svg/Symbol1.svg", "../assets/svg/twitter.svg", "../assets/svg/youtube3.svg", "../assets/svg/linkidin4.svg"]
         },
         1: {
             name: "Дэвит Смит",
             role: "Координатор по работе",
-            img: "../assets/icons/Itan.png", // Укажите правильный путь к большому фото Дэвита
+            img: "../assets/icons/Itan.webp", // Укажите правильный путь к большому фото Дэвита
             text: "«Привет! Я координирую все процессы в нашей команде, чтобы взаимодействие между хозяевами, нянями и ветеринарами было максимально комфортным, быстрым и безопасным для ваших любимцев.»",
             socials: ["../assets/svg/Symbol1.svg", "../assets/svg/twitter.svg", "../assets/svg/youtube3.svg", "../assets/svg/linkidin4.svg"]
         },
         2: {
             name: "Эмма Браун",
             role: "Ветеринар",
-            img: "../assets/icons/Bekka.png", // Путь к большому фото Эммы
+            img: "../assets/icons/Bekka.webp", // Путь к большому фото Эммы
             text: "«Здоровье хвостатых и усатых пациентов — мой главный приоритет. Провожу регулярные осмотры, слежу за самочувствием и всегда готова оказать квалифицированную медицинскую помощь.»",
             socials: ["../assets/svg/Symbol1.svg", "../assets/svg/twitter.svg", "../assets/svg/youtube3.svg", "../assets/svg/linkidin4.svg"]
         },
         3: {
             name: "Мэри Глоуд",
             role: "Грумер",
-            img: "../assets/icons/Sandra.png", // Путь к большому фото Мэри
+            img: "../assets/icons/Sandra.webp", // Путь к большому фото Мэри
             text: "«Красота требует заботы! С удовольствием сделаю вашему питомцу стильную стрижку, помою профессиональными средствами и приведу в порядок когти и шерстку без стресса.»",
             socials: ["../assets/svg/Symbol1.svg", "../assets/svg/twitter.svg", "../assets/svg/youtube3.svg", "../assets/svg/linkidin4.svg"]
         }

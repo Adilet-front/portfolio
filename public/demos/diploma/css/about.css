@@ -32,7 +32,7 @@ max-width: 100%; /* Теперь сайт тянется на всю ширин�
 
 /* --- ШАПКА --- */
 .header {
-    background-image: url('../assets/icons/girlwithdog.png');
+    background-image: url('../assets/icons/girlwithdog.webp');
     width: 100%;
     /* ИСПРАВЛЕНО: убираем жесткие 959px, делаем гибкую минимальную высоту */
     min-height: 90vh; 
@@ -748,7 +748,7 @@ width: 45px;
     min-height: 867px; /* Вместо жесткой height используем min-height */
     margin: 0 auto;
     
-    background-image: url('../assets/icons/back5.png');
+    background-image: url('../assets/icons/back5.webp');
     
     /* Изменяем cover на contain, чтобы картинка не обрезалась и встала ровно вверху */
     background-size: 100% auto; 
@@ -1213,7 +1213,7 @@ width: 45px;
     height: 827px;
     background-color: #fcfbfa;
     /* СОБАКA КАК ФОН: выравнивание по правому краю, снизу (с учетом высоты нижней плашки) */
-    background-image: url('../assets/icons/appointment2-right.png.png');
+    background-image: url('../assets/icons/appointment2-right.png.webp');
     background-repeat: no-repeat;
     background-position: right bottom 250px;
     background-size: auto 580px; /* Высота собаки как в исходном коде */

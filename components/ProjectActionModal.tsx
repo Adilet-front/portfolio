@@ -59,8 +59,8 @@ export function ProjectActionModal({
           <div className="flex items-center gap-3 min-w-0">
             <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-line bg-surface">
               <Image
-                src={project.cover}
-                alt={project.title}
+                src={project.cover.src}
+                alt={project.cover.alt}
                 fill
                 sizes="56px"
                 className="object-cover"
