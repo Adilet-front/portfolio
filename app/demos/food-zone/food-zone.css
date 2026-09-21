@@ -10,8 +10,11 @@
   position: fixed;
   inset: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   place-items: center;
   overflow: auto;
+  overflow-x: hidden;
   background: radial-gradient(
     ellipse at 50% 35%,
     #f6ead6 0,
@@ -71,8 +74,36 @@
   display: block;
   object-fit: cover;
 }
+.fz-standalone {
+  --fz-return-height: 44px;
+  padding-top: var(--fz-return-height);
+}
+.fz-return-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--fz-return-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  z-index: 2;
+}
+.fz-return-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--fz-ink);
+}
+.fz-standalone .fz-device {
+  height: min(856px, calc(100dvh - var(--fz-return-height) - 56px));
+}
 .fz-device {
   width: 402px;
+  min-width: 0;
+  max-width: 100%;
   height: min(856px, calc(100dvh - 56px));
   min-height: 450px;
   padding: 9px;
@@ -110,6 +141,7 @@
 .fz-phone-screen {
   height: 100%;
   width: 100%;
+  min-width: 0;
   border-radius: 43px;
   overflow: hidden;
   position: relative;
@@ -152,12 +184,15 @@
 }
 .fz-app-body {
   flex: 1;
+  min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 .fz-scroll {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -169,6 +204,7 @@
   display: none;
 }
 .fz-content {
+  min-width: 0;
   padding: 0 20px 14px;
 }
 .fz-header {
@@ -563,6 +599,7 @@
 }
 .fz-chips {
   display: flex;
+  min-width: 0;
   gap: 7px;
   overflow-x: auto;
   scrollbar-width: none;
@@ -570,6 +607,7 @@
   padding: 2px 20px;
 }
 .fz-chips button {
+  flex: 0 0 auto;
   padding: 9px 15px;
   min-height: 38px;
   border-radius: 24px;
@@ -1965,18 +2003,6 @@
   font-weight: 400;
   display: block;
 }
-.fz-portfolio-link {
-  position: fixed;
-  top: 46px;
-  right: 45px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 11px;
-  color: #706757;
-  padding: 9px 0;
-  text-decoration: none;
-}
 .fz-desktop-caption {
   position: fixed;
   right: max(5%, calc(50% - 590px));
@@ -2037,19 +2063,29 @@
     left: 25px;
     top: 22px;
   }
-  .fz-portfolio-link {
-    right: 25px;
-    top: 26px;
-  }
 }
 @media (min-width: 481px) and (max-width: 760px) {
   .fz-desktop-brand,
-  .fz-portfolio-link,
   .fz-desktop-footer {
     display: none;
   }
 }
 @media (max-width: 480px) {
+  .fz-standalone {
+    --fz-return-height: calc(44px + env(safe-area-inset-top));
+  }
+  .fz-return-bar {
+    justify-content: flex-start;
+    padding-top: env(safe-area-inset-top);
+    border-bottom: 1px solid var(--fz-line);
+    background: var(--fz-paper);
+  }
+  .fz-standalone .fz-device {
+    height: calc(100dvh - var(--fz-return-height));
+  }
+  .fz-standalone .fz-phone-screen {
+    padding-top: 0;
+  }
   .fz-stage {
     background: var(--fz-paper);
   }
@@ -2068,7 +2104,6 @@
   .fz-desktop-brand,
   .fz-desktop-caption,
   .fz-desktop-footer,
-  .fz-portfolio-link,
   .fz-status-bar {
     display: none;
   }

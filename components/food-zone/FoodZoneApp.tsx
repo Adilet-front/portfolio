@@ -3,9 +3,9 @@
 import Image from "next/image";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import {
   ArrowDown,
+  ArrowLeft,
   ArrowRight,
   Bell,
   Bike,
@@ -51,6 +51,7 @@ import {
   type Order,
 } from "@/content/food-zone";
 import { DemoMap, Empty, FoodCard, Header, Quantity, Row, Sheet } from "./ui";
+import { demoReturnDelta, portfolioReturnPath, type DemoNavigation } from "@/content/demo-navigation";
 
 const STORAGE_KEY = "food-zone:v1";
 const screens = [
@@ -86,6 +87,7 @@ const locations = ["ул. Фрунзе, 54", "пр. Чуй, 120", "ул. Пан�
 export function FoodZoneApp() {
   const [state, setState] = useState<FoodState>(initialFoodState);
   const [ready, setReady] = useState(false);
+  const [standalone, setStandalone] = useState(false);
   const [route, setRoute] = useState("home");
   const [sheet, setSheet] = useState<SheetName>(null);
   const [query, setQuery] = useState("");
@@ -121,6 +123,15 @@ export function FoodZoneApp() {
   const rating = ratingDraft ?? order?.rating ?? 0;
   const review = reviewDraft ?? order?.review ?? "";
   const food = foods.find((item) => item.id === argument);
+  const hasUnreadNotifications =
+    (state.notificationsEnabled &&
+      !state.readNotifications.includes("welcome")) ||
+    state.orders.some(
+      (item) =>
+        !state.readNotifications.includes(
+          `${item.id}-${item.step}-${item.cancelled}`,
+        ),
+    );
   const navScreen = ["menu", "restaurant", "dish"].includes(screen)
     ? "menu"
     : ["orders", "order", "tracking", "chat", "review"].includes(screen)
@@ -130,6 +141,20 @@ export function FoodZoneApp() {
         : "home";
 
   useEffect(() => {
+    const isStandalone = window.self === window.top;
+    // Preserve this entry across reloads and Back/Forward. Internal screens
+    // have a depth so the portfolio return skips them in one history action.
+    if (isStandalone && !window.history.state?.foodZoneNavigation) {
+      const returnTo = portfolioReturnPath(document.referrer, window.location.origin);
+      const navigation: DemoNavigation = {
+        depth: 0,
+        returnTo: returnTo ?? "/",
+        canGoBack: returnTo !== null && window.history.length > 1,
+      };
+      window.history.replaceState(
+        { ...window.history.state, foodZoneNavigation: navigation }, "",
+      );
+    }
     const readRoute = () => {
       setRoute(window.location.hash.slice(1) || "home");
       setSheet(null);
@@ -147,6 +172,7 @@ export function FoodZoneApp() {
         setStorageFailed(true);
       }
       setOffline(!navigator.onLine);
+      setStandalone(isStandalone);
       readRoute();
       setReady(true);
     }, 650);
@@ -198,12 +224,34 @@ export function FoodZoneApp() {
       scroller.current?.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    window.history.pushState(null, "", `#${next}`);
+    if (window.self !== window.top) {
+      // Iframe navigation must not add entries to the portfolio's history.
+      window.history.replaceState(window.history.state, "", `#${next}`);
+    } else {
+      const navigation = window.history.state?.foodZoneNavigation as DemoNavigation | undefined;
+      window.history.pushState({
+        ...window.history.state,
+        foodZoneNavigation: {
+          depth: (navigation?.depth ?? 0) + 1,
+          returnTo: navigation?.returnTo ?? "/",
+          canGoBack: navigation?.canGoBack ?? false,
+        },
+      }, "", `#${next}`);
+    }
     setRoute(next);
     setSheet(null);
     setFormError("");
     setRating(null);
     setReview(null);
+  }
+  function returnToPortfolio() {
+    const navigation = window.history.state?.foodZoneNavigation as DemoNavigation | undefined;
+    if (navigation?.canGoBack) {
+      window.history.go(demoReturnDelta(navigation.depth));
+    } else {
+      // Direct links / new tabs have no originating portfolio history entry.
+      window.location.replace("/");
+    }
   }
   function quantity(id: string, delta: number) {
     setState((current) => ({
@@ -534,7 +582,7 @@ export function FoodZoneApp() {
                 onClick={() => go("notifications")}
               >
                 <Bell size={21} />
-                {!state.readNotifications.includes("welcome") && <i />}
+                {hasUnreadNotifications && <i />}
               </button>
             </header>
           ) : (
@@ -1150,12 +1198,18 @@ export function FoodZoneApp() {
       return order ? (
         <>
           <Header
-            title={screen === "tracking" && order.step === 2 && !order.cancelled ? "Курьер в пути" : "Ваш заказ"}
+            title={
+              screen === "tracking" && order.step === 2 && !order.cancelled
+                ? "Курьер в пути"
+                : "Ваш заказ"
+            }
             back={() =>
               go(screen === "tracking" ? `order/${order.id}` : "orders")
             }
           />
-          {screen === "tracking" && order.step === 2 && !order.cancelled && <DemoMap tracking step={order.step} />}
+          {screen === "tracking" && order.step === 2 && !order.cancelled && (
+            <DemoMap tracking step={order.step} />
+          )}
           <div className="fz-content">
             <div
               className={`fz-order-hero${order.cancelled ? " cancelled" : ""}`}
@@ -1874,7 +1928,14 @@ export function FoodZoneApp() {
     totals.count > 0 &&
     ["home", "menu", "restaurant", "favorites"].includes(screen);
   return (
-    <div className="fz-stage">
+    <div className={`fz-stage${standalone ? " fz-standalone" : ""}`}>
+      {standalone && (
+        <div className="fz-return-bar">
+          <button type="button" onClick={returnToPortfolio} className="fz-return-button">
+            <ArrowLeft size={16} /> В портфолио
+          </button>
+        </div>
+      )}
       <aside className="fz-desktop-brand" aria-hidden="true">
         <span className="fz-brand-icon">
           <UtensilsCrossed size={22} />
@@ -1883,9 +1944,6 @@ export function FoodZoneApp() {
           Food Zone<small>Вкусное рядом.</small>
         </span>
       </aside>
-      <Link className="fz-portfolio-link" href="/">
-        Портфолио <ArrowRight size={15} />
-      </Link>
       <div className="fz-device">
         <div className="fz-phone-screen">
           {!ready ? (
@@ -2098,9 +2156,19 @@ export function FoodZoneApp() {
                   )}
                   {sheet === "reorder" && order && (
                     <>
-                      <p className="fz-description">В корзине уже есть блюда. Заменить их составом этого заказа по текущим ценам?</p>
-                      <button className="fz-btn" onClick={() => repeatOrder(order, true)}>Заменить и повторить</button>
-                      <button className="fz-text-button" onClick={closeSheet}>Сохранить текущую корзину</button>
+                      <p className="fz-description">
+                        В корзине уже есть блюда. Заменить их составом этого
+                        заказа по текущим ценам?
+                      </p>
+                      <button
+                        className="fz-btn"
+                        onClick={() => repeatOrder(order, true)}
+                      >
+                        Заменить и повторить
+                      </button>
+                      <button className="fz-text-button" onClick={closeSheet}>
+                        Сохранить текущую корзину
+                      </button>
                     </>
                   )}
                   {sheet === "edit-profile" && (

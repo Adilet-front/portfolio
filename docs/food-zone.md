@@ -34,6 +34,8 @@ Tokens are scoped to `.fz-stage`: orange `#ed9149`, cream `#fff7de`, paper `#faf
 
 At widths up to 480px the device frame and simulated status bar disappear. The app uses `100dvh` and safe-area insets. On desktop a 402px device is centered with a height constrained to the viewport. Content scrolls inside the phone; navigation remains anchored. No transform-based screen scaling.
 
+The stage grid uses zero-minimum tracks so the menu category strip cannot widen the phone. Categories scroll independently. Embedded previews have no portfolio link and replace their internal hash instead of adding entries to the parent browsing flow. A standalone/full-screen launch shows `В портфолио`; it returns to the originating portfolio page in one history action even after navigating between demo screens. A directly opened demo falls back to the portfolio home page.
+
 Sheets support Escape, focus trapping and focus restoration, with the background inert. Buttons have accessible labels, active tabs expose their state, status messages use live regions, reduced-motion preferences are honored, and form fields use 16px text on phones to avoid focus zoom.
 
 ## Design source and known fidelity gap
@@ -58,6 +60,10 @@ The initial screen overview was inspected visually. Both design-context and asse
 Run `node --test tests/food-zone.test.mjs` with Node 22.18+ (native TypeScript stripping), `npx tsc --noEmit`, `npm run lint`, and `npm run build`.
 
 Browser checks cover search/no results, favorite toggling, quantity and promo validation, missing address, demo payment choice, order creation, reload persistence, delivery progress, chat, rating, cancellation, history/reorder, responsive layout and portfolio integration.
+
+Verified on 2026-09-21: six model tests, TypeScript and repository ESLint passed. The complete order-to-review flow, history navigation, profile editing, UI Kit and embedded portfolio preview were exercised in the browser. At viewport widths 320, 375, 390 and 430px the app and scroll container fit without horizontal overflow. Production build succeeded with `npm run build -- --webpack`; the default Turbopack build hit an environment process/port permission error.
+
+Responsive regression: checked the Menu screen specifically at 320, 375, 390 and 430px, with the Profile tab inside the viewport and the Menu → Profile transition working. At 1440px the 402px phone remains centered. Verified that the embedded demo has no portfolio control, while full-screen Menu → Profile → `В портфолио` returns to `/work/food-zone` through browser history. The portfolio certificate uses its original upright orientation and 1831 × 2525 aspect ratio; its enlarged view fits both desktop and 390px mobile viewports.
 
 ## Follow-up after Figma access
 
