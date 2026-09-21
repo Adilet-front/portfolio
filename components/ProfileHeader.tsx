@@ -31,7 +31,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
             alt={profile.name}
             fill
             sizes="110px"
-            className="object-cover"
+            className="object-cover object-[center_30%]"
             priority
           />
         </div>

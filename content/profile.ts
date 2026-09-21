@@ -266,7 +266,7 @@ export const profile: Profile = {
     }
   ],
   memberSince: "марта 2026 года",
-  avatar: "/avatar.jpg",
+  avatar: "/avatar-aliya.jpg",
   shareTitle: "Молдоисаева Алия — UX/UI-дизайнер (Middle)",
   shareText: "Портфолио UX/UI-дизайнера Молдоисаевой Алии",
   projects: projects

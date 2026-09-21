@@ -16,7 +16,7 @@ export function DesktopProfileSidebar({ profile }: DesktopProfileSidebarProps) {
           alt={profile.name}
           fill
           sizes="144px"
-          className="object-cover"
+          className="object-cover object-[center_30%]"
           priority
         />
       </div>
