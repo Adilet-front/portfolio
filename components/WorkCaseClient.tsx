@@ -18,7 +18,6 @@ import {
   Wrench,
 } from "lucide-react";
 import { FigmaIcon } from "@/components/FigmaIcon";
-import { ProjectLivePreviewModal } from "@/components/ProjectLivePreviewModal";
 import type { Project, Profile } from "@/content/profile";
 
 type WorkCaseClientProps = {
@@ -27,7 +26,6 @@ type WorkCaseClientProps = {
 };
 
 export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isEmbeddedLoaded, setIsEmbeddedLoaded] = useState(false);
   const isInternalDemo = project.liveUrl.startsWith("/demos/");
   const isBehance = project.liveUrl.includes("behance.net");
@@ -87,7 +85,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
               {isInternalDemo ? (
                 <button
                   type="button"
-                  onClick={() => setIsPreviewOpen(true)}
+                  onClick={() => window.location.assign(project.liveUrl)}
                   className="group flex items-center justify-center gap-2.5 rounded-2xl border border-line bg-card px-4 py-3.5 text-[14px] font-semibold text-foreground transition hover:border-emerald-500/60 hover:bg-emerald-500/15"
                 >
                   <Globe size={18} className="text-emerald-400" />
@@ -199,7 +197,7 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
                 </h2>
                 <button
                   type="button"
-                  onClick={() => setIsPreviewOpen(true)}
+                  onClick={() => window.location.assign(project.liveUrl)}
                   title="Развернуть проект во весь экран"
                   className="inline-flex h-9 shrink-0 items-center gap-2 rounded-lg border border-line bg-card px-3 text-[12px] font-medium text-foreground/80 transition hover:bg-surface hover:text-foreground"
                 >
@@ -367,10 +365,6 @@ export function WorkCaseClient({ project, profile }: WorkCaseClientProps) {
         </div>
       </article>
 
-      <ProjectLivePreviewModal
-        project={isPreviewOpen ? project : null}
-        onClose={() => setIsPreviewOpen(false)}
-      />
     </>
   );
 }

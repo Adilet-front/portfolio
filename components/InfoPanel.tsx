@@ -44,14 +44,17 @@ function CertificateArtwork({
   className?: string;
 }) {
   return (
-    <div className={`relative aspect-[3/4] overflow-hidden bg-white ${className}`}>
+    <div
+      className={`relative overflow-hidden bg-white ${className}`}
+      style={{ aspectRatio: `${certificate.imageWidth} / ${certificate.imageHeight}` }}
+    >
       <Image
         src={certificate.image}
         alt={`Сертификат «${certificate.title}»`}
         width={certificate.imageWidth}
         height={certificate.imageHeight}
         sizes="(max-width: 768px) 78vw, 360px"
-        className="absolute left-1/2 top-1/2 h-auto w-[133.334%] max-w-none -translate-x-1/2 -translate-y-1/2 rotate-90"
+        className="block h-full w-full object-contain"
       />
     </div>
   );
@@ -255,7 +258,7 @@ export function InfoPanel({ profile }: { profile: Profile }) {
           <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto p-4 sm:p-6">
             <CertificateArtwork
               certificate={openCertificate}
-              className="w-[min(92vw,68vh)] shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
+              className="w-[min(92vw,calc((100dvh-112px)*0.72))] shrink-0 shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
             />
           </div>
         </div>

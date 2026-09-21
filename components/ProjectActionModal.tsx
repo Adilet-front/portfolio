@@ -135,7 +135,7 @@ export function ProjectActionModal({
                     Реализованный проект
                   </div>
                   <div className="text-[12px] text-muted">
-                    Интерактивный запуск прямо в портфолио
+                    Открыть во весь экран с возвратом в портфолио
                   </div>
                 </div>
               </div>

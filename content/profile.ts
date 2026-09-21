@@ -261,12 +261,12 @@ export const profile: Profile = {
       issuedAt: "4 августа 2026 года",
       credentialId: "KS260027832",
       image: "/certificates/ux-ui-certificate.jpg",
-      imageWidth: 2560,
-      imageHeight: 1920
+      imageWidth: 1831,
+      imageHeight: 2525
     }
   ],
   memberSince: "марта 2026 года",
-  avatar: "/avatar.jpg",
+  avatar: "/avatar-aliya.jpg",
   shareTitle: "Молдоисаева Алия — UX/UI-дизайнер (Middle)",
   shareText: "Портфолио UX/UI-дизайнера Молдоисаевой Алии",
   projects: projects
